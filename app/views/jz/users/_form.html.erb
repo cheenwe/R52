@@ -1,0 +1,52 @@
+<%= form_with(model: jz_user, local: true) do |form| %>
+  <% if jz_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(jz_user.errors.count, "error") %> prohibited this jz_user from being saved:</h2>
+
+      <ul>
+      <% jz_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alipay %>
+    <%= form.text_field :alipay %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rate %>
+    <%= form.number_field :rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remark %>
+    <%= form.text_field :remark %>
+  </div>
+
+  <div class="field">
+    <%= form.label :this_month_num %>
+    <%= form.number_field :this_month_num %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,59 @@
+
+    <div class="weui-tab">
+
+          <header class="demos-header">
+            <h1 class="demos-title">首页</h1>
+          </header>
+
+      <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__hd">新建</div>
+          <div class="weui-panel__bd">
+          <a href="/m/client" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="<%= image_path('mobile/icon_nav_select.png') %>" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">建客户</h4>
+              <p class="weui-media-box__desc"> 有意向成单的客户信息,</p>
+            </div>
+          </a>
+          <a href="/m/track" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="<%= image_path('mobile/icon_nav_tab.png') %>" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">写跟进</h4>
+              <p class="weui-media-box__desc"> 记录每天跟进的信息,</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="weui-tabbar">
+        <a href="/m/home" class="weui-tabbar__item weui-bar__item--on">
+          <div class="weui-tabbar__icon">
+            <img src="<%= image_path('mobile/icon_nav_button.png') %>" alt="">
+          </div>
+          <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a href="/m/clients" class="weui-tabbar__item ">
+          <!-- <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span> -->
+          <div class="weui-tabbar__icon">
+            <img src="<%= image_path('mobile/icon_nav_cell.png') %>" alt="">
+          </div>
+          <p class="weui-tabbar__label">客户</p>
+        </a>
+        <a href="/m/tracks" class="weui-tabbar__item ">
+          <div class="weui-tabbar__icon">
+            <img src="<%= image_path('mobile/icon_nav_article.png') %>" alt="">
+          </div>
+          <p class="weui-tabbar__label">跟进</p>
+        </a>
+        <a href="/m/me" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="<%= image_path('mobile/icon_nav_new.png') %>" alt="">
+          </div>
+          <p class="weui-tabbar__label">我</p>
+        </a>
+      </div>
+    </div>
+

@@ -1,0 +1,150 @@
+<div class="weui-tab">
+  <div class="weui-tab__bd">
+      <div style="width:95%;margin:0 auto;padding-bottom:60px;">
+
+        <header class="demos-header">
+          <h1 class="demos-title">写跟进</h1>
+        </header>
+
+        <form id="new_reply" action="/m/track" accept-charset="UTF-8" data-remote="true" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    
+          <!-- 新建客户跟踪 -->
+            <div class="weui-cells__title">联系途径<span class="form-required">*</span></div>
+            <div class="weui-cells-me">
+              <div class="weui-cell-me">
+                <div class="weui-cell__bd">
+                  <input name="track[category_id]" required="required" class="form-control me-select" id="tujing" type="text" value="">
+                </div>
+              </div>
+            </div>
+            <div class="weui-cells__title">销售状态<span class="form-required">*</span></div>
+            <div class="weui-cells-me">
+              <div class="weui-cell-me">
+                <div class="weui-cell__bd">
+                  <input name="track[status_id]" required="required" class="form-control me-select" id="zhuangtai" type="text" value="">
+                </div>
+              </div>
+            </div>
+            <div class="weui-cells__title"><label for="date" class="weui-label">跟进日期<span class="form-required">*</span></label></div>
+            <div class="weui-cells-me">
+              <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <input type="text" placeholder=" " id="date" ui-date=dateOption ui-date-format="yy-mm-d" class="weui-input me-input" name="track[visit_at]" autocomplete="off">
+                </div>
+              </div>
+            </div>
+            <div class="weui-cells__title">客户困惑<span class="form-required">*</span></div>
+            <div class="weui-cells-me">
+              <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="me-textarea" name="track[comment]" rows="2" autocomplete="on" placeholder=" " required></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="weui-cells__title">下一步计划<span class="form-required">*</span></div>
+            <div class="weui-cells-me">
+              <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="me-textarea" name="track[place]" rows="2" autocomplete="on" placeholder=" " required></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="weui-btn-area">
+              <input class="weui-btn weui-btn_primary" name="commit" type="submit" value="提交">
+            </div>
+        
+        </form>
+
+      </div>
+  </div>
+
+
+  <!-- 底部导航 -->
+  <div class="weui-tabbar">
+    <a href="/m/home" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_button.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">首页</p>
+    </a>
+    <a href="/m/clients" class="weui-tabbar__item ">
+      <!-- <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span> -->
+      <div class="weui-tabbar__icon  weui-bar__item--on">
+        <img src="<%= image_path('mobile/icon_nav_cell.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">客户</p>
+    </a>
+    <a href="/m/tracks" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_article.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">跟进</p>
+    </a>
+    <a href="/m/me" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_new.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">我</p>
+    </a>
+  </div>
+</div>
+
+
+<script>
+  $("#date").calendar({
+    value: ["<%= Date.today %>"],
+    dateFormat: 'yyyy-mm-dd'
+  });
+
+  window.onload = function(){
+    tujing();
+    zhuangtai();
+  }
+  //联系途径
+  function tujing() {
+    var tujing =[]
+    function load() {
+        $.ajax({
+        type: 'GET',
+        url: "/m/api/track?type=tujing",
+        success: function (data) {
+            tujing = data.data
+            demo()
+        },
+        })
+    }
+    load()
+    function demo() {
+      $("#tujing").select({
+        title: "联系途径",
+        items: tujing
+        
+      });
+    }
+  }
+
+  //销售状态
+  function zhuangtai() {
+    var zhuangtai =[]
+    function load() {
+        $.ajax({
+        type: 'GET',
+        url: "/m/api/track?type=zhuangtai",
+        success: function (data) {
+            zhuangtai = data.data
+            demo()
+        },
+        })
+    }
+    load()
+    function demo() {
+      $("#zhuangtai").select({
+        title: "销售状态",
+        items: zhuangtai
+        
+      });
+    }
+  }
+</script>

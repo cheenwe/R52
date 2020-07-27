@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sy_app.name %>
+</p>
+
+<p>
+  <strong>Abbr:</strong>
+  <%= @sy_app.abbr %>
+</p>
+
+<%= link_to 'Edit', edit_sy_app_path(@sy_app) %> |
+<%= link_to 'Back', sy_apps_path %>

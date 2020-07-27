@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: bz_tools
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  project    :string
+#  purpose    :string
+#  remark     :string
+#  url        :string
+#  version    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  project: MyString
+  name: MyString
+  purpose: MyString
+  remark: MyString
+  url: MyString
+  version: MyString
+
+two:
+  project: MyString
+  name: MyString
+  purpose: MyString
+  remark: MyString
+  url: MyString
+  version: MyString

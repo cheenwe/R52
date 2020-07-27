@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: sy_configs
+#
+#  id         :integer          not null, primary key
+#  value      :string
+#  var        :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  var: MyString
+  value: MyString
+
+two:
+  var: MyString
+  value: MyString

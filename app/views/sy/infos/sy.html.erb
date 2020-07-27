@@ -1,0 +1,97 @@
+  <style>
+  .app_popup{margin: 0;padding: 28px; padding-right:18px;text-align: left;white-space: normal;overflow: hidden; }
+  .app_popup>li{display: inline-block;margin: 0 0 10px 0; /*width:86px; height:98px;*/border: 1px solid transparent;}
+  .app_popup>li:hover{border: 1px solid #E5E5E5;}
+  .app_popup>li .app-popup-li{display: block;font-size: 13px;text-align: center;margin:8px 3px;}
+  .app_popup>li .app-popup-li:hover{text-decoration:none;}
+  .app_popup>li .app-popup-li>span{display:block;}
+  .app_popup>li .app-popup-li-appico{margin-bottom:8px;}
+  .app_popup>li .app-popup-li img{display: inline-block;vertical-align: top;height:70px;width:70px;}
+  .app_popup>li .app-popup-li .app-popup-li-appname{margin: 0;white-space:nowrap;overflow:hidden; text-overflow:ellipsis;width: 80px;padding:0 5px;line-height:20px;font-size: 13px;color: #333333;}
+
+  </style>
+  <h1>
+  系统监控
+  </h1>
+  <br>
+  <ul class="app_popup" role="tablist">
+    <li data-appid="10">
+      <a class="app-popup-li" href="/sy/apps" title=" 项目库" >
+        <span class="app-popup-li-appico">
+          <img src="http://demo.dzzoffice.com/data/attachment/appico/201712/21/123754pb0s666i6sjws1jc.png">
+        </span>
+        <span class="app-popup-li-appname">  项目库 </span>
+      </a>
+    </li>
+
+    <li data-appid="22">
+      <a class="app-popup-li" href="/sy/services" title="应用服务" >
+        <span class="app-popup-li-appico">
+          <img src="http://demo.dzzoffice.com/data/attachment/appico/201911/18/140906waogpc1jjzgypqhp.png">
+
+        </span>
+        <span class="app-popup-li-appname"> 应用服务 </span>
+      </a>
+    </li>
+    <li data-appid="23">
+      <a class="app-popup-li" href="/sy/infos" title="记录" >
+        <span class="app-popup-li-appico">
+          <img src="http://demo.dzzoffice.com/data/attachment/appico/201911/18/140942f5qbvy066og66s8q.png">
+        </span>
+        <span class="app-popup-li-appname"> 记录 </span>
+      </a>
+    </li>
+
+    <li data-appid="22">
+      <a class="app-popup-li" href="/sy/alarms" title="告警" >
+        <span class="app-popup-li-appico">
+          <img src="http://demo.dzzoffice.com/data/attachment/appico/201911/18/140914mbjq5yv3m3ebzvbw.png">
+        </span>
+        <span class="app-popup-li-appname"> 告警 </span>
+      </a>
+    </li>
+
+    <li data-appid="21">
+      <a class="app-popup-li" href="/sy/configs" title="配置" >
+        <span class="app-popup-li-appico">
+          <img src="http://demo.dzzoffice.com/data/attachment/appico/201911/18/140905pe75l6l71v6k6tlg.png">
+
+        </span>
+        <span class="app-popup-li-appname"> 配置 </span>
+      </a>
+    </li>
+    <!-- <a href="#" onclick="clearCookie();">clearCookie</a> -->
+  </ul>
+
+  <br>
+  <br>
+
+<h1><a href="#/sy/services">异常服务列表</a></h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>服务名</th>
+      <th>最新状态</th>
+      <th> 原因</th>
+      <th>最后更新</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Sy::Service.includes(:app).where(state:1).each do |sy_service| %>
+      <tr>
+
+        <td><%= sy_service.app.name rescue '' %>(<%= sy_service.app.abbr rescue '' %>)</td>
+        <td><%= sy_service.name %>(<%= sy_service.abbr %>)</td>
+
+        <td><%= sy_service.state rescue '' %></td>
+        <td><%= sy_service.remark rescue '' %></td>
+        <td><%= sy_service.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

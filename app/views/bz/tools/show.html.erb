@@ -1,0 +1,49 @@
+<style>
+body{marign:0;padding:0 10px;}
+a,a:link,a:visited {color:#000}
+a:hover {color:#fff}
+table {width:100%;margin-top:20px;}
+th,td {border:1px solid #808080;padding:5px;}
+th {background: #c2c2c2}
+tr:hover {background:#fffadb}
+#red{color:red;padding-left:5px;}
+</style>
+<p id="notice"><%= notice %></p>
+
+<h1><%= @bz_tool.name %></h1>
+<h4>版本更新记录<small style="float:right"><a href="/bz/tools">返回数据列表</a> | <a href="/bz/tool/upload">上传数据</a></small></h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>文件</th>
+      <th>版本</th>
+      <th>更新时间</th>
+      <th>上传联系人</th>
+      <th>下载次数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Bz::Version.where(tool_id:@bz_tool.id).order("id DESC").each do |bz_version| %>
+      <tr>
+        <td><%= bz_version.tool_id %></td>
+        <td>
+          <% tool_name = Bz::Tool.find(bz_version.tool_id).name rescue '' %>
+          <!-- <a href="/down?url=<%= bz_version.file %>&name=<%= tool_name %>.zip" target="_blank"><%= bz_version.file %></a> -->
+          <a href="<%= bz_version.file %>" target="_blank"><%= bz_version.file %></a>
+        </td>
+        <td>
+          <%= bz_version.version %>
+          <% if Bz::Version.where(tool_id:@bz_tool.id).last.version == bz_version.version %>
+          <span id="red">new</span>
+          <% end %>
+        </td>
+        <td><%= bz_version.updated_at.strftime('%Y-%m-%d %H:%M') %></td>
+        <td><%= bz_version.remark %></td>
+        <td>-</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

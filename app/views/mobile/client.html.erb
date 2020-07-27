@@ -1,0 +1,310 @@
+
+<div class="weui-tab">
+  <div class="weui-tab__bd">
+    <div style="width:95%;margin:0 auto;">
+    <header class="demos-header">
+      <h1 class="demos-title">新建客户</h1>
+    </header>
+
+    <form id="new_reply" action="/m/client" accept-charset="UTF-8" data-remote="true" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <!-- 客户单位主体 -->
+        <div class="weui-cells__title">客户名称<span class="form-required">*</span></div>
+        <div class="weui-cells-me">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <input type="text" class="weui-input me-input" name="client[name]" autocomplete="off" placeholder=" " required/>
+            </div>
+          </div>
+        </div>
+    
+        <div class="weui-cells__title">客户类型<span class="form-required">*</span></div>
+        <div class="weui-cells-me">
+          <div class="weui-cell-me">
+            <div class="weui-cell__bd">
+              <input name="client[nature_id]" required="required" class="form-control me-select" id="leixing" type="text" value="">
+            </div>
+          </div>
+        </div>
+    
+        <div class="weui-cells__title">主营</div>
+        <div class="weui-cells-me">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <input type="text" class="weui-input me-input" name="client[explanation]" autocomplete="off" placeholder=" " />
+            </div>
+          </div>
+        </div>
+    
+        <div class="weui-cells__title">省份<span class="form-required">*</span></div>
+        <div class="weui-cells-me">
+          <div class="weui-cell-me">
+            <div class="weui-cell__bd">
+              <input name="client[province]" required="required" class="form-control me-select" id="shengfen" type="text" value="">
+            </div>
+          </div>
+        </div>
+        
+        <div class="weui-cells__title">城市<span class="form-required">*</span></div>
+        <div class="weui-cells-me">
+          <div class="weui-cell-me">
+            <div class="weui-cell__bd">
+              <input name="client[city]" required="required" class="form-control me-select" id="chengshi" type="text" value="">
+            </div>
+          </div>
+        </div>
+        
+        <div class="weui-cells__title">需求产品</div>
+        <div class="weui-cells-me">
+          <div class="weui-cell-me">
+            <div class="weui-cell__bd">
+              <input name="client[product_id]" required="required" class="form-control me-select" id="xuqiu" type="text" value="">
+            </div>
+          </div>
+        </div>
+        
+        <div class="weui-cells__title">项目经理</div>
+        <div class="weui-cells-me">
+          <div class="weui-cell-me">
+            <div class="weui-cell__bd">
+              <input name="client[developer_id]" required="required" class="form-control me-select" id="" type="text" value="">
+              <!-- <select name="client[developer_id]" required="required" class="form-control me-select">
+                <option value=" " selected="selected"> </option>
+                
+                <option value=" "> </option>
+                
+              </select> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 客户联系人资料 -->
+        <div class="weui-cells__title">客户联系人姓名<span class="form-required">*</span></div>
+        <div class="weui-cells-me">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <input type="text" class="weui-input me-input" name="contacter[name]" autocomplete="off" placeholder=" " required/>
+            </div>
+          </div>
+        </div>
+
+        <div class="weui-cells__title">客户联系人手机号<span class="form-required">*</span></div>
+        <div class="weui-cells-me">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <select class="" style="width:15%;height:28px;float:left;border:0;background:none;outline:none" name="">
+                  <option value="1">+86</option>
+                </select>
+                <input class="" autocomplete="off" style="width:80%;height:28px;float:right;border:0;outline:none" type="number" pattern="[0-9]*" name="contacter[phone]" placeholder="请输入号码" oninput="if(value.length>11)value=value.slice(0,11)">
+                <!-- <input type="text" class="weui-input me-input" name="contacter[phone]" autocomplete="off" placeholder=" " required/> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="weui-cells__title">客户联系人职位</div>
+        <!-- position_id -->
+        <div class="weui-cells-me">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <input type="text" class="weui-input me-input" name="contacter[remark]" autocomplete="off" placeholder=" " />
+            </div>
+          </div>
+        </div>
+
+        <div class="weui-cells__title">客户联系人住址</div>
+        <div class="weui-cells-me">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <input type="text" class="weui-input me-input" name="contacter[nickname]" autocomplete="off" placeholder=" " />
+            </div>
+          </div>
+        </div>
+
+        <div class="weui-cells__title">客户联系人邮箱</div>
+        <div class="weui-cells-me">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <input type="text" class="weui-input me-input" name="contacter[email]" autocomplete="off" placeholder=" " />
+            </div>
+          </div>
+        </div>
+
+        <!-- 客户情况，进展 -->
+        <div class="weui-cells__title">客户需求<span class="form-required">*</span></div>
+        <div class="weui-cells-me">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <textarea class="me-textarea" name="client[suggest]" rows="2" autocomplete="off" placeholder=" " required></textarea>
+                <!-- <input type="text" class="weui-input me-input" name="client[suggest]" autocomplete="off" placeholder=" " required/> -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="weui-cells__title">访谈背景</div>
+        <div class="weui-cells-me">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <textarea class="me-textarea" name="client[background]" rows="2" autocomplete="off" placeholder=" " required></textarea>
+                <!-- <input type="text" class="weui-input me-input" name="client[background]" autocomplete="off" placeholder=" " /> -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="weui-cells__title">客户困惑</div>
+        <div class="weui-cells-me">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <textarea class="me-textarea" name="client[puzzled]" rows="2" autocomplete="off" placeholder=" " required></textarea>
+                <!-- <input type="text" class="weui-input me-input" name="client[puzzled]" autocomplete="off" placeholder=" " /> -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="weui-cells__title">所属供应商</div>
+        <div class="weui-cells-me">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <input type="text" class="weui-input me-input" name="client[saler_name]" autocomplete="off" placeholder=" " />
+            </div>
+          </div>
+        </div>
+
+        <div class="weui-btn-area">
+          <input class="weui-btn weui-btn_primary" name="commit" type="submit" value="提交">
+        </div>
+    
+    </form>
+
+  </div>
+  </div>
+
+
+  <!-- 底部导航 -->
+  <div class="weui-tabbar">
+    <a href="/m/home" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_button.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">首页</p>
+    </a>
+    <a href="/m/clients" class="weui-tabbar__item ">
+      <!-- <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span> -->
+      <div class="weui-tabbar__icon  weui-bar__item--on">
+        <img src="<%= image_path('mobile/icon_nav_cell.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">客户</p>
+    </a>
+    <a href="/m/tracks" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_article.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">跟进</p>
+    </a>
+    <a href="/m/me" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_new.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">我</p>
+    </a>
+  </div>
+</div>
+
+<script>
+
+  //打开网页时加载
+  window.onload = function(){
+    leixing();
+    shengfen();
+    chengshi();
+    xuqiu();
+  }
+  //客户类型
+  function leixing() {
+    var leixing =[]
+    function load() {
+        $.ajax({
+        type: 'GET',
+        url: "/m/api/track?type=leixing",
+        success: function (data) {
+            leixing = data.data
+            demo()
+        },
+        })
+    }
+    load()
+    function demo() {
+      $("#leixing").select({
+        title: "客户类型",
+        items: leixing
+        
+      });
+    }
+  }
+  //省份
+  function shengfen() {
+    var shengfen =[]
+    function load() {
+        $.ajax({
+        type: 'GET',
+        url: "/m/api/track?type=shengfen",
+        success: function (data) {
+            shengfen = data.data
+            demo()
+        },
+        })
+    }
+    load()
+    function demo() {
+      $("#shengfen").select({
+        title: "选择省份",
+        items: shengfen
+        
+      });
+    }
+  }
+  //城市
+  function chengshi() {
+    var chengshi =[]
+    function load() {
+        $.ajax({
+        type: 'GET',
+        url: "/m/api/track?type=chengshi",
+        success: function (data) {
+            chengshi = data.data
+            demo()
+        },
+        })
+    }
+    load()
+    function demo() {
+      $("#chengshi").select({
+        title: "选择市",
+        items: chengshi
+        
+      });
+    }
+  }
+  //需求产品
+  function xuqiu() {
+    var xuqiu =[]
+    function load() {
+        $.ajax({
+        type: 'GET',
+        url: "/m/api/track?type=xuqiu",
+        success: function (data) {
+            xuqiu = data.data
+            demo()
+        },
+        })
+    }
+    load()
+    function demo() {
+      $("#xuqiu").select({
+        title: "需求产品",
+        items: xuqiu
+        
+      });
+    }
+  }
+</script>

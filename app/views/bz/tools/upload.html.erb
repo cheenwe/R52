@@ -1,0 +1,102 @@
+<style>
+body{marign:0;padding:0 10px;}
+a,a:link,a:visited {color:#000}
+a:hover {color:#fff}
+.form-left {width:30%;float:left;}
+.tb-right {width:68%;float:right;margin-top:30px;}
+.form-left input {width:100%;}
+table {width:100%;margin-top:20px;}
+th,td {border:1px solid #808080;padding:5px;}
+th {background: #c2c2c2}
+tr:hover {background:#fffadb}
+.btn {width:100%;text-align:center}
+.btn button {width:100px}
+#red{color:red;padding-left:5px;}
+</style>
+
+<div class="upload-box">
+    <div class="form-left">
+        <h3>数据上传</h3><br>
+        <form id="new_reply" action="/bz/tool/upload" enctype="multipart/form-data"  accept-charset="UTF-8" data-remote="true" method="post" class="card-header">
+
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+            <div class="form-group">
+                <label>项目名称<span id="red">*</span></label>
+                <input name="bz_tool[project]" list="tool_project" required="" placeholder="请选择项目" autocomplete="off" class='form-control'/>
+                <datalist id="tool_project" autocomplete="off">
+                  <%Bz::Tool.all.each do |tool|%>
+                    <option><%= tool.project %></option>
+                  <% end %>
+                </datalist>
+            </div>
+            <div class="form-group">
+                <label>数据名称<span id="red">*</span></label>
+                <input name="bz_tool[name]" list="tool_name" required="" placeholder="选择或输入数据名称" autocomplete="off" class='form-control'/>
+                <datalist id="tool_name" autocomplete="off">
+                    <% Bz::Tool.all.each do |tools| %>
+                        <option><%= tools.name %></option>
+                    <% end %>
+                </datalist>
+                <!-- <input type="search" class="form-control" required="" name="bz_tool[name]" value=""> -->
+            </div>
+
+            <div class="form-group">
+                <label>数据用途</label>
+                <input type="search" class="form-control" name="bz_tool[purpose]" value="" autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label>数据联系人</label>
+                <input type="search" class="form-control" name="bz_tool[remark]" value="" autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label>上传数据<span id="red">*</span></label>
+                <input type="file" name="file" id="file" class="form-control" required="" value="" autocomplete="off">
+            </div>
+
+            <!-- <input name="bz_tool[url]" placeholder="url" value="" class:'form-input' /> -->
+            <!-- <input name="bz_tool[version]" placeholder="version" value="" class:'form-input' /> -->
+            <div class="btn">
+                <button type="submit" id="reply-button" class="btn btn-success" data-disable-with="提 交">提 交</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="tb-right">
+        <h4><a href="/bz/tools">数据列表</a></h4>
+        <table>
+            <thead>
+            <tr>
+                <th>项目</th>
+                <th>数据名称</th>
+                <th>数据用途</th>
+                <th>数据联系人</th>
+                <th>数据链接</th>
+                <th>最新版本</th>
+                <th>更新时间</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% Bz::Tool.last(15).each do |bz_tool| %>
+                <tr>
+                <td><%= bz_tool.project %></td>
+                <td><a href="/bz/tools/<%= bz_tool.id %>"><%= bz_tool.name %></a></td>
+                <td><%= bz_tool.purpose %></td>
+                <td><%= bz_tool.remark %></td>
+                <td><%#= bz_tool.url.last(10) %>
+                    <!-- <a href="/down?url=<%#= bz_tool.url %>&name=<%#= bz_tool.name %>_<%#= bz_tool.version %>.exe" target="_blank">立即下载</a> -->
+                    <a href="<%= bz_tool.url %>" target="_blank">立即下载</a>
+                </td>
+                <td><%= bz_tool.version %></td>
+                <td><%= bz_tool.updated_at.strftime('%Y-%m-%d %H:%M') %></td>
+                <!-- <td><%= link_to 'Show', bz_tool %></td>
+                <td><%= link_to 'Edit', edit_bz_tool_path(bz_tool) %></td>
+                <td><%= link_to 'Destroy', bz_tool, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+
+</div>

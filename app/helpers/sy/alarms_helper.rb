@@ -1,0 +1,2 @@
+module Sy::AlarmsHelper
+end

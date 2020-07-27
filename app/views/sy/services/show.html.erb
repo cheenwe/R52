@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>App:</strong>
+  <%= @sy_service.app_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sy_service.name %>
+</p>
+
+<p>
+  <strong>Abbr:</strong>
+  <%= @sy_service.abbr %>
+</p>
+
+<p>
+  <strong>Remark:</strong>
+  <%= @sy_service.remark %>
+</p>
+
+<p>
+  <strong>Is open:</strong>
+  <%= @sy_service.is_open %>
+</p>
+
+<%= link_to 'Edit', edit_sy_service_path(@sy_service) %> |
+<%= link_to 'Back', sy_services_path %>

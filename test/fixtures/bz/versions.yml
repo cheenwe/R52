@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: bz_versions
+#
+#  id         :integer          not null, primary key
+#  file       :string
+#  remark     :string
+#  version    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  tool_id    :integer
+#
+
+one:
+  tool_id: 1
+  file: MyString
+  version: MyString
+  remark: MyString
+
+two:
+  tool_id: 1
+  file: MyString
+  version: MyString
+  remark: MyString

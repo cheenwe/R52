@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @sy_alarm.service_id %>
+</p>
+
+<p>
+  <strong>Alarm at:</strong>
+  <%= @sy_alarm.alarm_at %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @sy_alarm.reason %>
+</p>
+
+<%= link_to 'Edit', edit_sy_alarm_path(@sy_alarm) %> |
+<%= link_to 'Back', sy_alarms_path %>

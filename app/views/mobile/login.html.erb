@@ -1,0 +1,50 @@
+
+
+<header class='demos-header'>
+<!-- <img src="<%#= image_path('logo.png') %>" alt="login.jpg"> -->
+<h1 class="demos-title">销售CRM 手机端</h1>
+<p class='demos-sub-title'>轻量强大的系统，不仅仅是 Crm</p>
+</header>
+
+<form id="new_reply" action="/m/login" accept-charset="UTF-8" data-remote="true" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="mobile" value="1" >
+  <input type="hidden" name="back_url" value="/m/home" >
+
+
+    <div class="weui-cells__title">用户名</div>
+    <div class="weui-cells">
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <input type="text" class="weui-input" name="user[name]" autocomplete="on"  aria-describedby="emailHelp"   id="email"  placeholder="请输入您的姓名"required/>
+        </div>
+      </div>
+    </div>
+
+    <div class="weui-cells__title">密码</div>
+    <div class="weui-cells">
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <input type="password" class="weui-input" name="user[password]" id="password" autocomplete="off"  placeholder="请输入您的密码" required/>
+        </div>
+      </div>
+    </div>
+
+
+
+    <label for="weuiAgree" class="weui-agree">
+      <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
+      <span class="weui-agree__text">
+        <a href="javascript:void(0);">记住我</a>
+      </span>
+    </label>
+
+    <div class="weui-btn-area">
+      <input class="weui-btn weui-btn_primary" name="commit" type="submit" value="登陆系统">
+    </div>
+
+</form>
+
+  <%= render 'footer' %>
+
+

@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: sy_alarms
+#
+#  id         :integer          not null, primary key
+#  alarm_at   :datetime
+#  reason     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  service_id :integer
+#
+
+one:
+  service_id: 1
+  alarm_at: 2020-07-22 18:55:07
+  reason: MyString
+
+two:
+  service_id: 1
+  alarm_at: 2020-07-22 18:55:07
+  reason: MyString

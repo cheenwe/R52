@@ -1,0 +1,47 @@
+<%= form_with(model: bz_tool, local: true) do |form| %>
+  <% if bz_tool.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bz_tool.errors.count, "error") %> prohibited this bz_tool from being saved:</h2>
+
+      <ul>
+      <% bz_tool.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :project %>
+    <%= form.text_field :project %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :purpose %>
+    <%= form.text_field :purpose %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remark %>
+    <%= form.text_field :remark %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :version %>
+    <%= form.text_field :version %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

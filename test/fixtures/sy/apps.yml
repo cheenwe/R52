@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: sy_apps
+#
+#  id         :integer          not null, primary key
+#  abbr       :string
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name: MyString
+  abbr: MyString
+
+two:
+  name: MyString
+  abbr: MyString

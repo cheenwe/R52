@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cloumn Downs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Result</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cloumn_downs.each do |cloumn_down| %>
+      <tr>
+        <td><%= cloumn_down.name %></td>
+        <td><%= cloumn_down.result %></td>
+        <td><%= link_to 'Show', cloumn_down %></td>
+        <td><%= link_to 'Edit', edit_cloumn_down_path(cloumn_down) %></td>
+        <td><%= link_to 'Destroy', cloumn_down, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cloumn Down', new_cloumn_down_path %>

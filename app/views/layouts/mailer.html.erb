@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="background: #e9eaed;">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+      body{font-size:14px;font-family:arial,verdana,sans-serif;line-height:1.666;padding:0;margin:0;overflow:auto;white-space:normal;word-wrap:break-word;min-height:100px}table{-webkit-font-smoothing:antialiased;font-family:'microsoft yahei','Helvetica Neue',sans-serif,SimHei;padding:30px;margin:25px auto;background:#fff;border-radius:5px;box-sizing:border-box}line{padding:10px 20px 20px 20px}hr{border:0;border-top:1px solid #ccc}.code{background:#f2f2f7;border-radius:2px;margin:10px 20px}.inline{border:1px solid #a8d4fa;border-radius:4px}.content{padding:10px 20px 10px 20px}.small{font-size:14px;line-height:14px}.footer{text-align:center;font-size:12px;line-height:18px;color:#a3a3a3;padding:5px 0}.footer-line{margin:0 40px;font-size:10px}a{color:#2b88d9;text-decoration:underline}.btn{display:inline-block;font-weight:400;cursor:pointer;color:#656565;text-align:center;vertical-align:middle;user-select:none;background-color:transparent;border:1px solid transparent;line-height:1.52857;border-radius:.2rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;padding:.0625rem .3125rem;font-size:.8125rem;line-height:1.5}.btn:hover{filter:alpha(opacity=70);opacity:.7;-moz-opacity:.7}.btn-secondary{background-color:#fff;border-color:#eaeaea;color:#333}.btn-success{color:#fff;background-color:#27c24c;border-color:#26be4a}.btn-info{color:#fff;background-color:#23b7e5;border-color:#23b7e5}.btn-primary{color:#fff;background-color:#5d9cec;border-color:#5d9cec}.btn-warning{color:#212529;background-color:#ff902b;border-color:#ff902b}.btn-danger{color:#fff;background-color:#f05050;border-color:#f05050}.text-success{color:#26be4a}.text-info{color:#23b7e5}.text-primary{color:#5d9cec}.text-warning{color:#ff902b}.text-danger{color:#f05050}.text-muted{text-align:center;font-size:12px;line-height:20px;color:#999;padding-top:6px}thead{color:#909399;font-weight:500;background:#f5f7fa}.we-table{position:relative;overflow:hidden;box-sizing:border-box;flex:1;width:100%;max-width:100%;background-color:#fff;font-size:13px;color:#606266}.we-table td,.we-table th{padding:8px 0;min-width:0;box-sizing:border-box;text-overflow:ellipsis;vertical-align:middle;position:relative;text-align:left;white-space:normal;overflow:hidden;word-break:break-all;line-height:13px;padding-left:8px;padding-right:8px}.we-table td,.we-table th{border-right:1px solid #ebeef5;border-bottom:1px solid #ebeef5;padding-left:10px}
+    </style>
+  </head>
+
+  <body>
+    <center>
+        <table class="inline" border="0" cellspacing="0" cellpadding="0" width="640" align="center">
+            <tbody>
+              <tr>
+                  <td style="color:#000;">
+                      <img height="28px" src="https://csdnimg.cn/cdn/content-toolbar/csdn-logo.png?v=20200416.1" alt="logo" style="background-color: #888">
+                      <img style="float:right;" width="84px" height="28px" src="https://coding-net-production-pp-ci.codehub.cn/68444aed-da97-4cc0-ad0e-2c77a9e35735.png" alt="slogan">
+                  </td>
+              </tr>
+
+              <tr>
+                  <td style="padding:10px 0;">
+                      <hr>
+                  </td>
+              </tr>
+
+              <%= yield %>
+
+              <tr>
+                  <td style="padding:10px 0;">
+                      <p class="text-muted">此邮件属系统发送，请勿直接回复，谢谢。<br> This email is sent by the system. Please do not reply directly. Thank you.</p>
+                      <hr>
+                  </td>
+              </tr>
+
+              <tr>
+                  <td class="footer">
+                    <% time = Time.now %>
+                      <p>Copyright © <%= time.year %> <a href="<%= Sy::Config.cfg('app_url') %>" style="text-decoration: none;"><%= Sy::Config.cfg('app_name') %></a></p>
+                      <p class="footer-line">
+                          欢迎致电即时客户服务
+                          <a href="tel:<%= Sy::Config.cfg('support_phone') %>">
+                              <font color="#666666"><%= Sy::Config.cfg('support_phone') %></font>
+                          </a> 或邮件客服:
+                          <a href="mailto:<%= Sy::Config.cfg('email_reply_to') %>">
+                              <font color="#666666"><%= Sy::Config.cfg('email_reply_to') %></font>
+                          </a>
+                      </p>
+                      <p class="footer-line">
+
+                          开发 @陈伟  <a href="mailto:cxhyun@126.com">
+                              <font color="#666666">cxhyun@126.com</font>
+                          </a>
+
+                      </p>
+                      <p class="footer-line">
+                          <%= time.strftime("%Y-%m-%d %H:%M:%S") %>
+                      </p>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+    </center>
+  </body>
+</html>

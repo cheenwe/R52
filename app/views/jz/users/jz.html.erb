@@ -1,0 +1,131 @@
+
+<h1>
+<a href="/jz?utf8=✓" >数据部-兼职人员签到</a>
+</h1>
+
+<!-- <small> 如无响应， 请按F5刷新页面</small> -->
+
+<h5>
+<% if @notices %>
+<div class="alert alert-danger alert-dismissable">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+<%= @notices %>
+<!--
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#" class="alert-link">Alert Link</a>. -->
+</div>
+<% else %>
+
+<% end %>
+</h5>
+
+<small> 使用说明：<br>
+ 1. 输入您的姓名，点击检索<br>
+ 2. 出现您的姓名信息，点击签到即可 或 在弹出表单中输入个人信息提交即可</small>
+
+
+</br>
+</br>
+</br>
+<table>
+<tbody>
+  <tr>
+    <form class="dc/user_search" id="dc/user_search" action="/jz" accept-charset="UTF-8" method="get">
+    <input name="utf8" type="hidden" value="✓">
+    <input name="search" type="hidden" value="true">
+
+    <td>
+      <label for="q_id_eq">你的姓名</label>
+      <input type="search" class="form-control" required name="name" id="q_id_eq"  value="<%= params[:name] %>">
+      <button type="submit" class="btn btn-primary btn-lg">检索</button>
+    </td>
+    <td>
+    </td>
+    </form>
+  </tr>
+</tbody>
+</table>
+
+
+
+<% if @has_come == 1 %>
+<small style="color: blue"> 请核对您的信息:</small>
+
+<p>
+<strong>姓名:</strong>
+<%= @jz_user.name rescue '' %>
+</p>
+
+<p>
+<strong>手机号:</strong>
+<%= @jz_user.phone rescue '' %>
+</p>
+
+<p>
+<strong>支付宝:</strong>
+<%= @jz_user.alipay rescue '' %>
+</p>
+
+<% if @jz_user.state == "10" %>
+<h4 style="color:red">您是黑名单,无法签到! <small>原因: <%= @jz_user.remark %></small></h4>
+<% else %>
+<table>
+  <tbody>
+      <tr>
+          <form class="jz" id="jz" action="/jz" accept-charset="UTF-8" method="post">
+          <input name="utf8" type="hidden" value="✓">
+          <input name="user_id" type="hidden" value="<%= @jz_user.id rescue '' %>">
+
+          <input type="submit" name="commit" value="签到" data-disable-with="Search">
+          </td>
+          </form>
+      </tr>
+  </tbody>
+</table>
+<% end %>
+
+
+<% elsif @has_come  == 0 %>
+<table>
+<small style="color: blue"> 请仔细填写您的信息:</small>
+<hr>
+<tbody>
+  <tr>
+    <form class="dc/user_search" id="dc/user_search" action="/jz" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <input name="search" type="hidden" value="true">
+
+  </tr>
+  <tr>
+    <td>
+      <label for="q_id_eq">你的姓名</label>
+      <input type="search" name="name" required id="q_id_eq" value="<%= params[:name] %>">
+    </td>
+</tr>
+<tr>
+    <td>
+      <label for="q_id_eq">你的手机</label>
+      <input type="number" name="phone" required oninput="if(value.length>11)value=value.slice(0,11)" />
+    </td>
+</tr>
+<tr>
+    <td>
+      <label for="q_id_eq">你的支付宝</label>
+      <input type="search" name="alipay" required id="q_id_eq"> <small style="color:red">支付宝必须与签到的姓名一致. 若填写银行卡,则到账148元(手续费2元)</small>
+    </td>
+</tr>
+<tr>
+    <td>
+      <label for="q_id_eq">你的身份证</label>
+      <input type="search" name="id_card" required id="q_id_eq">
+    </td>
+</tr>
+<tr>
+    <td>
+      <input type="submit" name="commit" value="提交资料" data-disable-with="Search">
+    </td>
+    </form>
+  </tr>
+</tbody>
+</table>
+
+<% end %>

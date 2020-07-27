@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: sy_alarms
+#
+#  id         :integer          not null, primary key
+#  alarm_at   :datetime
+#  reason     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  service_id :integer
+#
+class Sy::Alarm < ApplicationRecord
+    belongs_to :service, class_name: "Sy::Service"
+
+    after_create :send_alarm_mail
+
+
+    def send_alarm_mail
+
+      if Sy::Config.cfg("is_send_alarm_mail").to_i == 1
+        SendMailer.alarm_mail(self).deliver_later
+      end
+
+
+    end
+
+end

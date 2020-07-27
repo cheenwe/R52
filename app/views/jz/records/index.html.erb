@@ -1,0 +1,110 @@
+<p id="notice"><%= notice %></p>
+
+<h1>兼职人员信息 </h1> 
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+      <tr>
+        <th>#</th>
+        <th>兼职</th>
+        <th>实习</th>
+        <th>合计</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>num</td>
+        <td><%= @jz_records.size %></td>
+        <td><%= Jz::Sx.today.size %></td>
+        <td> <%= Jz::Sx.today.size + @jz_records.size %></td>
+      </tr> 
+  </tbody>
+</table>
+
+<div class="btn-group m-b-10">
+    <a href="/jz/records"><button type="button" class="btn btn-default waves-effect">全部</button></a> 
+    <a href="/jz/records?&q[enter_at_gt]=<%= Time.now.beginning_of_week%>"><button type="button" class="btn btn-default waves-effect">本周</button></a>
+    <a href="/jz/records?&q[enter_at_gt]=<%= Time.now.beginning_of_day-1.day%>&q[enter_at_lt]=<%= Time.now.beginning_of_day%>"><button type="button" class="btn btn-default waves-effect">昨天</button></a>
+    <a href="/jz/records?&q[enter_at_gt]=<%= Time.now.beginning_of_day%>"><button type="button" class="btn btn-default waves-effect">今天</button></a>
+</div>
+
+<div class="btn-group m-b-10">
+    <a href="/jz/records?&q[enter_at_gt]=<%=Time.now.beginning_of_day%>&q[is_first_eq]=1"><button type="button" class="btn btn-default waves-effect">今天第一次</button></a>
+    <a href="/alipay" target="_blank">发今天工资</a>
+</div>
+
+<table>
+  <tbody>
+      <tr>
+        <%= search_form_for @q do |f| %>
+          <td>
+            <%= f.label :id %>
+            <%= f.search_field :user_id_eq %>
+          </td>
+          <td>
+            <%= f.label :name %>
+            <%= f.search_field :user_name_cont %>
+          </td>
+          <td>
+            <%= f.label :phone %>
+            <%= f.search_field :user_phone_cont %>
+          </td>
+
+        <td>
+          <%= f.label :"检索" %>
+          <%= f.submit %>
+        </td>
+        <% end %>
+      </tr>
+  </tbody>
+</table>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>phone</th>
+      <th>id_card</th>
+      <th>alipay</th>
+      <th>Enter at</th>
+      <th>Is first</th>
+      <th>Computer num</th>
+      <th>Remark</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jz_records.each do |jz_record| %>
+      <tr>
+        <td><%= jz_record.user.id rescue '' %> |
+        <button class="btn btn-xs" id = "clipboard" data-clipboard-text="<%= jz_record.user.alipay rescue ''%>">
+        Copy 
+        </button>
+      </td>
+        <td><%= jz_record.user.name rescue ""%></td>
+        <td><%= jz_record.user.phone rescue ""%></td>
+        <td><%= jz_record.user.id_card rescue ""%></td>
+        
+        <td><%= jz_record.user.alipay rescue ""%></td>
+        <td><%= jz_record.enter_at %></td>
+        <td><%= jz_record.is_first %></td>
+        <td><%= jz_record.computer_num %></td>
+        <td><%= jz_record.remark %></td>
+        <td><%= link_to 'Show', jz_record %> | <%= link_to 'Edit', edit_jz_record_path(jz_record) %> | <%= link_to 'Destroy', jz_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @jz_records %>
+
+<br>
+<%= link_to 'New Jz Record', new_jz_record_path %>
+
+
+<script type="text/javascript">
+new ClipboardJS('#clipboard');
+</script>

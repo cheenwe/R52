@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @jz_user.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @jz_user.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @jz_user.phone %>
+</p>
+
+<p>
+  <strong>Alipay:</strong>
+  <%= @jz_user.alipay %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= @jz_user.rate %>
+</p>
+
+<p>
+  <strong>Remark:</strong>
+  <%= @jz_user.remark %>
+</p>
+
+<p>
+  <strong>This month num:</strong>
+  <%= @jz_user.this_month_num %>
+</p>
+
+<%= link_to 'Edit', edit_jz_user_path(@jz_user) %> |
+<%= link_to 'Back', jz_users_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tool:</strong>
+  <%= @bz_version.tool_id %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <%= @bz_version.file %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @bz_version.version %>
+</p>
+
+<p>
+  <strong>Remark:</strong>
+  <%= @bz_version.remark %>
+</p>
+
+<%= link_to 'Edit', edit_bz_version_path(@bz_version) %> |
+<%= link_to 'Back', bz_versions_path %>

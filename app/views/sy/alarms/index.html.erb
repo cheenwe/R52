@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h3><a href="/sy/services">报警列表</a></h3>
+
+
+<div>
+  <%= search_form_for @q do |f| %>
+    <div class="tools_search">
+      <strong>服务:</strong>
+      <input name="q[service_id_eq]" list="tool_project" placeholder="请选择服务" autocomplete="off" class='form-control'/>
+      <datalist id="tool_project" autocomplete="off">
+        <% Sy::Service.all.each do  |app| %>
+          <option value="<%=  app.id %>"><%=  app.name %>(<%=  app.abbr %>)</option>
+        <% end %>
+
+      </datalist>
+      <%#= f.search_field :project_cont, class:'form-control' %>
+    </div>
+
+    <button type="submit" id="reply-button" style="height:38px;" class="btn btn-success" data-disable-with="搜索">搜索</button>
+
+    <%= link_to '刷新', sy_alarms_path, class:"", 'data-disable-with' => "doing"%>
+  <% end %>
+</div>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>服务名</th>
+      <th>时间</th>
+      <th>原因</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sy_alarms.each do |sy_alarm| %>
+      <tr>
+        <td><%= sy_alarm.service.name rescue'' %>|<%= sy_alarm.service.abbr rescue'' %></td>
+
+        <td><%= sy_alarm.alarm_at.strftime('%Y-%m-%d %H:%M:%S') rescue'' %></td>
+        <td><%= sy_alarm.reason %></td>
+
+        <!-- <td><%= link_to 'Edit', edit_sy_alarm_path(sy_alarm) %></td>
+        <td><%= link_to 'Destroy', sy_alarm, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @sy_alarms %>

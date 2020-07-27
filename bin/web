@@ -1,0 +1,101 @@
+#!/bin/sh
+
+
+### BEGIN INIT INFO
+# Provides:          bank_web
+# Required-Start:    $local_fs $remote_fs $network $syslog redis-server
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: bank web services
+# Description:       bank web services
+# chkconfig: - 85 14
+### END INIT INFO
+
+
+# app_root="/home/deploy/project/web_server"
+
+basepath=$(cd `dirname $0`; pwd)
+app_root=`dirname $basepath`
+# app_root="/home/chenwei/workspace/ruby/bank_server"
+
+cd $app_root
+
+puma_pidfile="$app_root/tmp/pids/puma.pid"
+puma_stateile="$app_root/tmp/pids/puma.state"
+puma_cmd="bundle exec puma -C config/puma.yml"
+
+stop_puma_cmd="bundle exec pumactl --state $puma_stateile stop"
+restart_puma_cmd="bundle exec pumactl --state $puma_stateile restart"
+
+get_puma_pid()
+{
+
+if [  -f "$puma_pidfile" ]; then
+  puma_pid=$(cat $puma_pidfile)
+# else
+#     puma_pid=0
+fi
+}
+
+start()
+{
+  exec $puma_cmd
+}
+
+stop()
+{
+  get_puma_pid
+  kill -QUIT $puma_pid
+  # exec $stop_puma_cmd
+}
+
+status()
+{
+  get_puma_pid
+  if [  -z "$puma_pid" ]; then
+    echo "Puma not runing"
+  else
+    echo "Puma is runing, pid: $puma_pid"
+  fi
+}
+
+restart()
+{
+  get_puma_pid
+  if [  -z "$puma_pid" ]; then
+    exec $puma_cmd
+  else
+    kill -QUIT $puma_pid
+    exec $puma_cmd
+  fi
+}
+
+reload()
+{
+  get_puma_pid
+
+  kill -USR2 $puma_pid
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    restart
+    ;;
+  status)
+    status
+    ;;
+  reload)
+    reload
+    ;;
+  *)
+    echo "Usage:  $0 {start|stop|status|reload}"
+    ;;
+esac
+

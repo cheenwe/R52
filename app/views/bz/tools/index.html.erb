@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<h1><a href="/bz/tools">项目数据</a></h1>
+
+<div>
+  <%= search_form_for @q do |f| %>
+    <div class="tools_search">
+      <strong>项目:</strong>
+      <input name="q[project_cont]" list="tool_project" placeholder="请选择项目" autocomplete="off" class='form-control'/>
+      <datalist id="tool_project" autocomplete="off">
+          <% @bz_tools.each do |bz_tool| %>
+          <option><%= bz_tool.project %></option>
+          <% end %>
+      </datalist>
+      <%#= f.search_field :project_cont, class:'form-control' %>
+    </div>
+    <div class="tools_search">
+      <strong>数据名称:</strong>
+      <%= f.search_field :name_cont, class:'form-control' %>
+    </div>
+    <div class="tools_search">
+      <strong>用途:</strong>
+      <%= f.search_field :purpose_cont, class:'form-control' %>
+    </div>
+    <div class="tools_search">
+      <strong>联系人:</strong>
+      <%= f.search_field :remark_cont, class:'form-control' %>
+    </div>
+    <button type="submit" id="reply-button" style="height:38px;" class="btn btn-success" data-disable-with="搜索">搜索</button>
+
+    <%= link_to '刷新', bz_tools_path, class:"", 'data-disable-with' => "doing"%>
+    <a style="float:right;margin-top:8px" href="/bz/tool/upload">上传数据</a>
+  <% end %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th>数据名称</th>
+      <th>数据用途</th>
+      <th>上传联系人</th>
+      <th>下载数据</th>
+      <th>最新版本</th>
+      <th>最近更新时间</th>
+      <th>更新记录</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bz_tools.each do |bz_tool| %>
+      <tr>
+        <td><%= bz_tool.project %></td>
+        <td><a href="/bz/tools/<%= bz_tool.id %>"><%= bz_tool.name %></a></td>
+        <td><%= bz_tool.purpose %></td>
+        <td><%= bz_tool.remark %></td>
+        <td><%#= bz_tool.url %>
+          <!-- <a href="/down?url=<%= bz_tool.url %>&name=<%= bz_tool.name %>.zip" target="_blank">立即下载</a> -->
+          <a href="<%= bz_tool.url %>"></a>
+        </td>
+        <td><%= bz_tool.version %></td>
+        <td><%= bz_tool.updated_at.strftime('%Y-%m-%d %H:%M') %></td>
+        <td><%= link_to '查看历史版本', bz_tool %></td>
+        <!-- <td><%= link_to 'Edit', edit_bz_tool_path(bz_tool) %></td>
+        <td><%= link_to 'Destroy', bz_tool, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @bz_tools %>
+
+<%#= link_to 'New Bz Tool', new_bz_tool_path %>

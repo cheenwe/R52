@@ -1,0 +1,68 @@
+
+    <div class="weui-tab">
+      <div class="weui-tab__bd">
+
+          <header class="demos-header">
+            <h1 class="demos-title">关于我</h1>
+          </header>
+          <% current_user  =  User.find(session[:current_user_id])%>
+          <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+              <label class="weui-form-preview__label">姓名:</label>
+              <em class="weui-form-preview__value"> <%= session[:current_user_name] %></em>
+            </div>
+
+            <div class="weui-form-preview__hd">
+              <label class="weui-form-preview__label"> 账户开通时间:</label>
+              <em class="weui-form-preview__value"> <%= current_user.created_at.strftime("%Y-%m-%d") %></em>
+            </div>
+
+            <div class="weui-form-preview__hd">
+              <label class="weui-form-preview__label"> 最后登录时间:</label>
+              <em class="weui-form-preview__value"> <%= current_user.last_sign_in_at.strftime("%Y-%m-%d") %></em>
+            </div>
+            <div class="weui-form-preview__hd">
+              <label class="weui-form-preview__label"> 最后登录IP:</label>
+              <em class="weui-form-preview__value"> <%= current_user.last_sign_in_ip %></em>
+            </div>
+
+              <form id="new_reply" action="/m/logout" accept-charset="UTF-8" data-remote="true" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <input type="hidden" name="mobile" value="1" >
+                <input type="hidden" name="back_url" value="/m/home" >
+              <button type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" style="position: absolute; width: 100%; margin: auto;">退出系统</button>
+              </form>
+          </div>
+
+      </div>
+
+      <div class="weui-tabbar">
+        <a href="/m/home" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="<%= image_path('mobile/icon_nav_button.png') %>" alt="">
+          </div>
+          <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a href="/m/clients" class="weui-tabbar__item ">
+          <!-- <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span> -->
+          <div class="weui-tabbar__icon">
+            <img src="<%= image_path('mobile/icon_nav_cell.png') %>" alt="">
+          </div>
+          <p class="weui-tabbar__label">客户</p>
+        </a>
+        <a href="/m/tracks" class="weui-tabbar__item ">
+          <div class="weui-tabbar__icon">
+            <img src="<%= image_path('mobile/icon_nav_article.png') %>" alt="">
+          </div>
+          <p class="weui-tabbar__label">跟进</p>
+        </a>
+        <a href="/m/me" class="weui-tabbar__item weui-bar__item--on">
+          <div class="weui-tabbar__icon">
+            <img src="<%= image_path('mobile/icon_nav_new.png') %>" alt="">
+          </div>
+          <p class="weui-tabbar__label">我</p>
+        </a>
+      </div>
+    </div>
+
+

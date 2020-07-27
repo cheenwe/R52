@@ -1,0 +1,99 @@
+<div class="weui-tab">
+  <div class="weui-tab__bd">
+      <div style="width:100%;margin:0 auto;padding-bottom:60px;">
+      <!-- <header class="demos-header">
+        <h1 class="demos-title">客户信息</h1>
+      </header> -->
+      
+      <div class="weui-panel weui-panel_access">
+        <div class="weui-">
+          <!-- 搜索 -->
+          <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form" action="/m/clients" accept-charset="UTF-8" method="get">
+              <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input name="utf8" type="hidden" value="✓">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+                <input type="search" class="weui-search-bar__input" id="searchInput" name="q[name_cont]" placeholder="输入客户名称关键字并按回车搜索" required="">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+              </div>
+              <label class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+              </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+          </div>
+              <!-- <form class="license_search" id="license_search" action="/m/clients" accept-charset="UTF-8" method="get">
+                <input name="utf8" type="hidden" value="✓">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        
+                <input placeholder="用户" class="form-control" type="search" name="q[name_cont]" id="q_user_name_cont">
+                
+                <input type="submit" name="commit" value="搜索" class="weui-btn weui-btn_mini weui-btn_primary" data-disable-with="submitting">
+
+                <a class="btn  btn-outline-default" data-disable-with="doing" href="/m/clients">Reset</a>
+              </form> -->
+        </div>
+
+
+        <div class="weui-panel">
+          <div class="weui-panel__hd">我的客户</div>
+          <div class="weui-panel__bd">
+
+            <% @clients.each do |item| %>
+              <a class="me-link" href="/m/clients/<%= item.id %>">
+                <div class="weui-media-box weui-media-box_text">
+                  <h4 class="weui-media-box__title" style="font-size:14px;"><%= item.name %></h4>
+                  <!-- <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p> -->
+                  <ul class="weui-media-box__info">
+                    <li class="weui-media-box__info__meta"><%= item.product.name %></li>
+                    <!-- <li class="weui-media-box__info__meta">时间</li> -->
+                    <li class="weui-media-box__info__meta weui-media-box__info__meta_extra"><%= item.created_at.strftime("%Y-%m-%d") %></li>
+                    <!-- <%= item.province %>
+                    <%= item.product.name %>
+                    <%= item.suggest %> -->
+                  </ul>
+                </div>
+              </a>
+            <% end %>
+
+          </div>
+        </div>
+
+      </div>
+
+      <%= will_paginate @clients %>
+      </div>
+    </div>
+      
+  <!-- 底部导航 -->
+  <div class="weui-tabbar">
+    <a href="/m/home" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_button.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">首页</p>
+    </a>
+    <a href="/m/clients" class="weui-tabbar__item ">
+      <!-- <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span> -->
+      <div class="weui-tabbar__icon  weui-bar__item--on">
+        <img src="<%= image_path('mobile/icon_nav_cell.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">客户</p>
+    </a>
+    <a href="/m/tracks" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_article.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">跟进</p>
+    </a>
+    <a href="/m/me" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_new.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">我</p>
+    </a>
+  </div>
+  </div>

@@ -1,0 +1,2 @@
+module Sy::InfosHelper
+end

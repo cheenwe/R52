@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @jz_record.user_id %>
+</p>
+
+<p>
+  <strong>Enter at:</strong>
+  <%= @jz_record.enter_at %>
+</p>
+
+<p>
+  <strong>Is first:</strong>
+  <%= @jz_record.is_first %>
+</p>
+
+<p>
+  <strong>Computer num:</strong>
+  <%= @jz_record.computer_num %>
+</p>
+
+<p>
+  <strong>Remark:</strong>
+  <%= @jz_record.remark %>
+</p>
+
+<%= link_to 'Edit', edit_jz_record_path(@jz_record) %> |
+<%= link_to 'Back', jz_records_path %>

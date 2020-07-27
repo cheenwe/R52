@@ -1,0 +1,2 @@
+module Bz::VersionsHelper
+end

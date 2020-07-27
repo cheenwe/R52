@@ -1,0 +1,27 @@
+<%= form_with(model: column_upcase, local: true) do |form| %>
+  <% if column_upcase.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(column_upcase.errors.count, "error") %> prohibited this column_upcase from being saved:</h2>
+
+      <ul>
+      <% column_upcase.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :contect %>
+    <%= form.text_area :contect %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result %>
+    <%= form.text_area :result %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

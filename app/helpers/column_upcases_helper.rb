@@ -1,0 +1,2 @@
+module ColumnUpcasesHelper
+end

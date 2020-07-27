@@ -1,0 +1,58 @@
+body {padding:0;margin-top:0;margin-right:0;margin-left:0;}
+
+/**滚动条**/
+::-webkit-scrollbar {
+width : 0px;  /*高宽分别对应横竖滚动条的尺寸*/
+height: 0px;
+}
+::-webkit-scrollbar-thumb {
+border-radius: 10px; /*滚动条里面小方块*/
+box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+background: #535353;
+}
+::-webkit-scrollbar-track {
+box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); /*滚动条里面轨道*/
+border-radius: 10px;
+background: #ededed;
+}
+
+.b_tabs {width:100%;background: #fff;height:100%}
+/**左侧**/
+.menuSideBar {float:left;margin-right:1%;background:#f7f7f7;position: absolute;top:0;left:0;width:20%;min-height:100%;height:auto;font-size:14px;letter-spacing:1px}
+.nav-header {padding:15px 0;background:#3b3b3b;color:#fff}
+.nav-header b {color:#fff;font-size:14px;}
+.menuSideBar li {width:100%;float: left;color:#333;text-align: center;line-height:22px;}
+.menuSideBar li a {color:#333;}
+.menuSideBar li a:hover {background:#e6e6e6;font-weight:bold;color:#e51d15}
+.menuSideBar li a:visited {background:none}
+
+/**右侧 tabs**/
+.nav-tabs {background: #fcfcfc}
+#mainFrameTabs {width:79%;float: right;}
+#mainFrameTabs ul>li.active {font-weight:bold;}
+#mainFrameTabs ul {padding-left:1%;}
+#mainFrameTabs ul>li a {min-width:120px;text-align:center;}
+#mainFrameTabs ul>li:hover a {color:#000}
+
+/**标签关闭按钮**/
+/* position:relative */
+.bTabs i.navTabsCloseBtn {color:#AAAAAA;padding-left:5px;}
+.bTabs i.navTabsCloseBtn:hover{color:red;font-weight:bold;}
+
+/**下拉选项**/
+nav {float:right;width:8%;min-width:100px;text-align: center;position:absolute;top:0px;right:0;}
+ul,li{list-style: none;}
+nav .level>li{width:100%;float: left;border:1px solid #ebebeb;background: #fff;}
+nav .level>li a{line-height:25px;}
+nav .level>li b{line-height:38px;}
+nav .two{display: none;margin:0;padding:0;}  /* 先使二级菜单的内容隐藏 */
+nav .two{display: none;margin:0;padding:0;}  /* 先使二级菜单的内容隐藏 */
+nav .level>li:hover .two{display: block;}   /* 鼠标滑过一级菜单后的显示二级菜单 */
+nav .two li:hover{background: #e6e6e6;color:#e51d15}
+
+/**默认首页**/
+#bTabs_navTabsMainPage,.page-header {text-align: center}
+
+/**iframe**/
+.tab-content {float:right;width:100%;margin:0;padding:0;}
+.tab-pane iframe {width:100%;height:100%;border:0px;}

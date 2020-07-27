@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<h1><a href="/sy/services">服务列表</a></h1>
+
+
+<div>
+  <%= search_form_for @q do |f| %>
+    <div class="tools_search">
+      <strong>项目:</strong>
+      <input name="q[app_id_eq]" list="tool_project" placeholder="请选择项目" autocomplete="off" class='form-control'/>
+      <datalist id="tool_project" autocomplete="off">
+        <% Sy::App.all.each do  |app| %>
+          <option value="<%=  app.id %>"><%=  app.name %>(<%=  app.abbr %>)</option>
+        <% end %>
+
+      </datalist>
+      <%#= f.search_field :project_cont, class:'form-control' %>
+    </div>
+
+    <button type="submit" id="reply-button" style="height:38px;" class="btn btn-success" data-disable-with="搜索">搜索</button>
+
+    <%= link_to '刷新', sy_services_path, class:"", 'data-disable-with' => "doing"%>
+  <% end %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th width="15%">项目</th>
+      <th width="15%">服务名</th>
+      <th width="8%">开启监控</th>
+      <th width="32%">备注</th>
+      <th width="8%">最新状态</th>
+      <th width="15%">最后更新</th>
+      <th width="5%">-</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sy_services.each do |sy_service| %>
+      <tr>
+
+        <td><%= sy_service.app.name rescue '' %>(<%= sy_service.app.abbr rescue '' %>)</td>
+        <td><%= sy_service.name %>(<%= sy_service.abbr %>)</td>
+        <td><%= sy_service.is_open %></td>
+
+        <td><%= sy_service.remark %></td>
+        <td><%= sy_service.state rescue '' %></td>
+        <td><%= sy_service.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        <td><%= link_to 'Edit', edit_sy_service_path(sy_service) %></td>
+        <!-- <td><%= link_to 'Destroy', sy_service, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @sy_services %>
+
+

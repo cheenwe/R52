@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Jz Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>id_card</th>
+      <th>Alipay</th>
+      <th>Rate</th>
+      <th>Created At</th>
+      <th>This month num</th>
+      <!-- <th colspan="3"></th> -->
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jz_users.each do |jz_user| %>
+      <tr> 
+        <td><%= jz_user.code %></td>
+        <td><%= link_to jz_user.name, "/jz/users/#{jz_user.id}" %></td>
+        <td><%= jz_user.phone %></td>
+        <td><%= jz_user.id_card %></td>
+        <td><%= jz_user.alipay %></td>
+        <td><%= jz_user.rate %></td>
+        <td><%= jz_user.created_at.strftime("%m-%d %H:%M:%S")  %></td>
+        <td><%= jz_user.this_month_num %></td>
+        <td><%= link_to 'Edit', edit_jz_user_path(jz_user) %></td>
+        <td><%= link_to 'Destroy', jz_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- # <td><%= link_to 'Show', jz_user %></td>
+        # 
+        #  -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Jz User', new_jz_user_path %>

@@ -1,0 +1,27 @@
+<tr>
+    <td style="padding: 0px 20px;">
+        Hi <%= @user.name %>,
+    </td>
+</tr>
+<tr>
+    <td valign="middle" style="line-height:24px;padding: 15px 20px;">
+         您已成功开通系统账户, <br>
+         账户信息如下, (请尽快登陆系统并修改随机密码)
+    </td>
+</tr>
+
+<tr>
+    <td valign="left" style="font-size: 36px;color: #323A45;">
+        <div class="code">
+            <div class="small content">
+                登录地址： <a target="_blank" href="<%= Sy::Config.cfg('app_url') %> "><%= Sy::Config.cfg('app_url') %> </a>
+            </div>
+            <div class="small content">
+                登录账户：<%= @user.email %>
+            </div>
+            <div class="small content">
+                初始随机密码：<%= Sy::Config.cfg('default_password') %>
+            </div>
+        </div>
+    </td>
+</tr>

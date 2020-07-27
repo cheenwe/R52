@@ -1,0 +1,37 @@
+<%= form_with(model: jz_sx, local: true) do |form| %>
+  <% if jz_sx.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(jz_sx.errors.count, "error") %> prohibited this jz_sx from being saved:</h2>
+
+      <ul>
+      <% jz_sx.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_at %>
+    <%= form.datetime_select :start_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_at %>
+    <%= form.datetime_select :end_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

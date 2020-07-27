@@ -1,0 +1,27 @@
+<%= form_with(model: cloumn_down, local: true) do |form| %>
+  <% if cloumn_down.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cloumn_down.errors.count, "error") %> prohibited this cloumn_down from being saved:</h2>
+
+      <ul>
+      <% cloumn_down.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result %>
+    <%= form.text_field :result %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

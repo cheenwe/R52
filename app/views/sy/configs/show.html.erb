@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Var:</strong>
+  <%= @sy_config.var %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @sy_config.value %>
+</p>
+
+<%= link_to 'Edit', edit_sy_config_path(@sy_config) %> |
+<%= link_to 'Back', sy_configs_path %>

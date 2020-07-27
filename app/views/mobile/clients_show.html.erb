@@ -1,0 +1,149 @@
+<div class="weui-tab">
+  <div class="weui-tab__bd">
+      <div style="width:100%;margin:0 auto;padding-bottom:60px;">
+      <!-- <header class="demos-header">
+        <h1 class="demos-title">客户信息</h1>
+      </header> -->
+      <div class="weui-tab">
+          <div class="weui-navbar">
+            <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
+              客户信息
+            </a>
+            <a class="weui-navbar__item" href="#tab2">
+              客户需求/进展
+            </a>
+            <a class="weui-navbar__item" href="#tab3">
+              客户联系人信息
+            </a>
+          </div>
+          <div class="weui-tab__bd">
+            <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+                <!-- 客户信息 -->
+                <div class="weui-panel weui-panel_access">
+                  <div class="weui-panel weui-panel_access">
+                    <div class="weui-panel__hd">客户信息</div>
+                    <div class="weui-panel__bd">
+                      
+                      <div class="weui-media-box weui-media-box_text me-contacters">
+                        <h4 class="weui-media-box__title"><%= @clients.name %></h4>
+                        <p class="weui-media-box__desc">客户类型 | <%= @clients.nature.name %></p>
+                        <p class="weui-media-box__desc">主营 | <%= @clients.explanation %></p>
+                        <p class="weui-media-box__desc">省份 | <%= @clients.province %> <%= @clients.city %></p>
+                        <p class="weui-media-box__desc">需求产品 | <%= @clients.product.name %></p>
+                        <p class="weui-media-box__desc">项目经理 | <%= @clients.developer_id %></p>
+                      </div>
+          
+                    </div>
+                    <!-- <div class="weui-panel__ft">
+                      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                        <div class="weui-cell__bd">查看更多</div>
+                        <span class="weui-cell__ft"></span>
+                      </a>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+            <div id="tab2" class="weui-tab__bd-item">
+                <!-- 客户需求/进展 -->
+                <div class="weui-panel weui-panel_access">
+                  <div class="weui-panel weui-panel_access">
+                    <div class="weui-panel__hd"><%= @clients.name %></div>
+                    <div class="weui-panel__bd">
+                      
+                      <div class="weui-media-box weui-media-box_text me-contacters">
+                        <!-- <h4 class="weui-media-box__title"></h4> -->
+                        
+                        <div style="display:none;" id="tihuan-old-1"><%= @clients.suggest %></div>
+                        <div style="display:none;" id="tihuan-old-2"><%= @clients.background %></div>
+                        <div style="display:none;" id="tihuan-old-3"><%= @clients.puzzled %></div>
+
+                        <p class="weui-media-box__desc">客户需求： <div class="tihuan-new" id="tihuan-new-1"></div></p>
+                        <p class="weui-media-box__desc">访谈背景： <div class="tihuan-new" id="tihuan-new-2"></div></p>
+                        <p class="weui-media-box__desc">客户困惑： <div class="tihuan-new" id="tihuan-new-3"></div></p>
+                        <p class="weui-media-box__desc">所属供应商 | <%= @clients.saler_id %></p>
+                      </div>
+          
+                    </div>
+                    <!-- <div class="weui-panel__ft">
+                      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                        <div class="weui-cell__bd">查看更多</div>
+                        <span class="weui-cell__ft"></span>
+                      </a>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+            <div id="tab3" class="weui-tab__bd-item">
+                <!-- 客户联系人信息 -->
+                <div class="weui-panel weui-panel_access">
+                  <div class="weui-panel weui-panel_access">
+                    <div class="weui-panel__hd"><%= @clients.name %></div>
+                    <div class="weui-panel__bd">
+                      
+                      <div class="weui-media-box weui-media-box_text me-contacters">
+                        <!-- <h4 class="weui-media-box__title"></h4> -->
+                        <p class="weui-media-box__desc">联系人姓名 | <%= @contacters.name %></p>
+                        <p class="weui-media-box__desc">手机号 | <%= @contacters.phone %></p>
+                        <p class="weui-media-box__desc">邮箱 | <%= @contacters.email %></p>
+                        <p class="weui-media-box__desc">职位 | <%= @contacters.remark %></p>
+                        <p class="weui-media-box__desc">住址 | <%= @contacters.nickname %></p>
+                      </div>
+          
+                    </div>
+                    <!-- <div class="weui-panel__ft">
+                      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                        <div class="weui-cell__bd">查看更多</div>
+                        <span class="weui-cell__ft"></span>
+                      </a>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+      
+  <!-- 底部导航 -->
+  <div class="weui-tabbar">
+    <a href="/m/home" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_button.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">首页</p>
+    </a>
+    <a href="/m/clients" class="weui-tabbar__item ">
+      <!-- <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span> -->
+      <div class="weui-tabbar__icon  weui-bar__item--on">
+        <img src="<%= image_path('mobile/icon_nav_cell.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">客户</p>
+    </a>
+    <a href="/m/tracks" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_article.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">跟进</p>
+    </a>
+    <a href="/m/me" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <img src="<%= image_path('mobile/icon_nav_new.png') %>" alt="">
+      </div>
+      <p class="weui-tabbar__label">我</p>
+    </a>
+  </div>
+  </div>
+
+<!-- 替换换行符 -->
+<script type="text/javascript">
+  var txts = $('#tihuan-old-1').html();
+  txts=txts.replace(/\\n/g,"<br>")
+  $('#tihuan-new-1').html(txts);
+  var txts = $('#tihuan-old-2').html();
+  txts=txts.replace(/\\n/g,"<br>")
+  $('#tihuan-new-2').html(txts);
+  var txts = $('#tihuan-old-3').html();
+  txts=txts.replace(/\\n/g,"<br>")
+  $('#tihuan-new-3').html(txts);
+</script>

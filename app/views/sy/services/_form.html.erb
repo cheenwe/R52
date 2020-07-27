@@ -1,0 +1,42 @@
+<%= form_with(model: sy_service, local: true) do |form| %>
+  <% if sy_service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sy_service.errors.count, "error") %> prohibited this sy_service from being saved:</h2>
+
+      <ul>
+      <% sy_service.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :app_id %>
+    <%= form.number_field :app_id, disabled:true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :abbr %>
+    <%= form.text_field :abbr, disabled:true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remark %>
+    <%= form.text_field :remark %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_open %>
+    <%= form.check_box :is_open %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

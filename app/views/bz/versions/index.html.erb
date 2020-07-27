@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bz Versions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>File</th>
+      <th>Version</th>
+      <th>Remark</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bz_versions.each do |bz_version| %>
+      <tr>
+        <td><%= bz_version.tool_id %></td>
+        <td><%= bz_version.file %></td>
+        <td><%= bz_version.version %></td>
+        <td><%= bz_version.remark %></td>
+        <td><%= link_to 'Show', bz_version %></td>
+        <td><%= link_to 'Edit', edit_bz_version_path(bz_version) %></td>
+        <td><%= link_to 'Destroy', bz_version, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bz Version', new_bz_version_path %>

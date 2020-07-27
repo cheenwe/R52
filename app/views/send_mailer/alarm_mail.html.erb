@@ -1,0 +1,57 @@
+<tr>
+    <td style="padding: 0px 20px;">
+        Hi,
+    </td>
+</tr>
+<tr>
+    <td valign="middle" style="line-height:24px;padding: 15px 20px;" class="text-danger">
+        您于 <%= @alarm.alarm_at.strftime('%Y-%m-%d %H:%M:%S') rescue''  %> 收到告警邮件, 邮件内容如下:
+    </td>
+</tr>
+
+<tr>
+    <td class="content">
+        <table cellspacing="0" cellpadding="0" border="0" class="we-table">
+            <thead>
+                <tr class="">
+                    <th colspan="1">
+                        应用
+                    </th>
+                    <th>
+                        服务
+                    </th>
+                    <th colspan="2">
+                        原因
+                    </th>
+                    <th>
+                        时间
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="1">
+                        <%= @alarm.service.app.name rescue'' %>|<%= @alarm.service.app.abbr rescue'' %>
+                    </td>
+                    <td>
+                        <%= @alarm.service.name rescue'' %>|<%= @alarm.service.abbr rescue'' %>
+                    </td>
+                    <td colspan="2">
+                        <%= @alarm.reason %>
+                    </td>
+                    <td>
+                        <%= @alarm.alarm_at.strftime('%Y-%m-%d %H:%M:%S') rescue''  %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin: 8px 0;">可以点击<a target="_blank" href="<%= Sy::Config.cfg("app_url") %>/sy/alarms/">这里</a>进行查看。
+        </p>
+    </td>
+</tr>
+<tr>
+    <td class="content">
+        xxx团队
+    </td>
+</tr>

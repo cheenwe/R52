@@ -1,0 +1,60 @@
+
+          <header class="demos-header">
+            <h1 class="demos-title">客户</h1>
+          </header>
+
+<div class="weui-search-bar" id="searchBar">
+  <form class="weui-search-bar__form">
+    <div class="weui-search-bar__box">
+      <i class="weui-icon-search"></i>
+      <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+      <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+    </div>
+    <label class="weui-search-bar__label" id="searchText">
+      <i class="weui-icon-search"></i>
+      <span>搜索</span>
+    </label>
+  </form>
+  <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+</div>
+<table>
+
+            <tbody>
+                <tr>
+                  <form class="license_search" id="license_search" action="/m/clients" accept-charset="UTF-8" method="get"></form><input name="utf8" type="hidden" value="✓">
+
+                  <td>
+                    <input placeholder="用户" class="form-control" type="search" name="q[name_cont]" id="q_user_name_cont">
+                  </td>
+
+                  <td>
+                    <input type="submit" name="commit" value="搜索" class="btn  btn-outline-primary" data-disable-with="submitting">
+
+                    <a class="btn  btn-outline-default" data-disable-with="doing" href="/m/clients">Reset</a>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+          <table>
+
+          <br>
+          <table class="table card-table table-vcenter text-nowrap">
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>created_at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @clients.each do |item|  %>
+              <tr>
+                </td>
+                <td><%= item.name %></td>
+                <td><%= item.created_at.strftime("%Y-%m-%d") %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+
+                <%= will_paginate @clients %>

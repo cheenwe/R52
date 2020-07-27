@@ -1,0 +1,61 @@
+<style>
+.card {text-align: center;border-radius:5px}
+.p-1 {border:2px solid #fff;background: #d7e9f9;}
+.p-1:hover {background: #d7e9f9;border:2px solid #2e8ee5}
+.p-2 {border:2px solid #fff;background: #dff4dc;}
+.p-2:hover {background: #dff4dc;border:2px solid #5bba4f;}
+.p-3 {border:2px solid #fff;background: #fbe6e4;}
+.p-3:hover {background: #fbe6e4;border:2px solid #d32f22;}
+.card a {font-size:22px;}
+.col-sm-6 a:hover {background:none;text-decoration:underline;color:#000}
+</style>
+<div class="row">
+
+  <div class="col-sm-6 col-lg-2">
+    <a href="/bz/tool/upload">
+      <div class="card p-1">
+        <div class="d-flex align-items-center">
+          <span class="stamp stamp-md bg-blue mr-3">
+            <i class="fe fe-folder-plus"></i>
+          </span>
+          <div>
+            <h4 class="m-0">上传数据</h4>
+            <small class="text-muted"></small>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-sm-6 col-lg-2">
+    <a href="/bz/tools">
+      <div class="card p-2">
+        <div class="d-flex align-items-center">
+          <span class="stamp stamp-md bg-green mr-3">
+            <i class="fe fe-list"></i>
+          </span>
+          <div>
+            <h4 class="m-0">数据列表<small>共计<%= Bz::Tool.all.size %>个数据</small></h4>
+            <small class="text-muted"></small>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-sm-6 col-lg-2">
+    <a href="/jz">
+      <div class="card p-3">
+        <div class="d-flex align-items-center">
+          <span class="stamp stamp-md bg-yellow mr-3">
+            <i class="fe fe-edit-3"></i>
+          </span>
+          <div>
+            <h4 class="m-0">兼职签到</h4>
+            <small class="text-muted"></small>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

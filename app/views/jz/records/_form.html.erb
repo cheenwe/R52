@@ -1,0 +1,42 @@
+<%= form_with(model: jz_record, local: true) do |form| %>
+  <% if jz_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(jz_record.errors.count, "error") %> prohibited this jz_record from being saved:</h2>
+
+      <ul>
+      <% jz_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :enter_at %>
+    <%= form.datetime_select :enter_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_first %>
+    <%= form.check_box :is_first %>
+  </div>
+
+  <div class="field">
+    <%= form.label :computer_num %>
+    <%= form.number_field :computer_num %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remark %>
+    <%= form.text_field :remark %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

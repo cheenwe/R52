@@ -1,0 +1,2 @@
+module Bz::ToolsHelper
+end

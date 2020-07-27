@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Contect:</strong>
+  <%= @column_upcase.contect %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= raw(@column_upcase.result) %>
+</p>
+
+<%= link_to 'Edit', edit_column_upcase_path(@column_upcase) %> |
+<%= link_to 'Back', column_upcases_path %>
