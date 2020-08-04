@@ -19,15 +19,14 @@ class Sy::InfosController < ApplicationController
     state = params[:state]
     multi = params[:multi]
     reason = params[:reason]
-    services = params[:services]
+    services = params["services"]
 
-    if multi && multi == "1"
+    if multi && multi == 1
         if app &&  services
-          services.each do |service|
-            service =  service["service"]
-            state =  service["state"]
-            reason =  service["reason"]
-
+          services.each do |item|
+            service =  item["service"]
+            state =  item["state"]
+            reason =  item["reason"]
             service_id = Sy::Service.check_abbr(app, service)
 
             info = Sy::Info.create(service_id: service_id, state: state, reason: reason)
