@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lc Compares</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Train</th>
+      <th>Carriage</th>
+      <th>Old file</th>
+      <th>New file</th>
+      <th>Result</th>
+      <th>Reason</th>
+      <th>Result file</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lc_compares.each do |lc_compare| %>
+      <tr>
+        <td><%= lc_compare.train_id %></td>
+        <td><%= lc_compare.carriage_id %></td>
+        <td><%= lc_compare.old_file %></td>
+        <td><%= lc_compare.new_file %></td>
+        <td><%= lc_compare.result %></td>
+        <td><%= lc_compare.reason %></td>
+        <td><%= lc_compare.result_file %></td>
+        <td><%= link_to 'Show', lc_compare %></td>
+        <td><%= link_to 'Edit', edit_lc_compare_path(lc_compare) %></td>
+        <td><%= link_to 'Destroy', lc_compare, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lc Compare', new_lc_compare_path %>

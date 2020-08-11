@@ -1,0 +1,22 @@
+<%= form_with(model: lc_carriage, local: true) do |form| %>
+  <% if lc_carriage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lc_carriage.errors.count, "error") %> prohibited this lc_carriage from being saved:</h2>
+
+      <ul>
+      <% lc_carriage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :train_id %>
+    <%= form.number_field :train_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

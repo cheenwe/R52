@@ -35,5 +35,6 @@ public/uploads/tmp/
 db/schema.rb
 
 *.csv
+public/data
 public/uploads
 test/*

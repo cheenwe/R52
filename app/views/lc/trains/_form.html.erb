@@ -1,0 +1,32 @@
+<%= form_with(model: lc_train, local: true) do |form| %>
+  <% if lc_train.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lc_train.errors.count, "error") %> prohibited this lc_train from being saved:</h2>
+
+      <ul>
+      <% lc_train.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :uuid %>
+    <%= form.text_field :uuid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

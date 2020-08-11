@@ -1,0 +1,72 @@
+
+        <div class="uploads">
+            <div class="menu">
+                <ul>
+                    <li class="logo"><img src="<%= Sy::Config.cfg('app_logo_url')%>" alt=""></li>
+
+                    <li id="m1" class="active"><a href="/">上传文件</a></li>
+                    <li id="m2"><a href="/result">比对结果</a></li>
+                </ul>
+            </div>
+            <div class="box1">
+                <div class="rank-header">
+                    <div class="container">
+                        <ul>
+                            <li class="current"><a href="#">全部</a></li>
+                            <li class=""><a href="#">通过</a></li>
+                            <li class=""><a href="#">不通过</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="box2">
+                <br>
+                <br>
+                <div id="ilist">
+                    <div class="img-list">
+                        <div class="jpeg">
+                            <span class="pic">
+                                <img class="picture" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3238317745,514710292&fm=26&gp=0.jpg">
+                                <img class="picture" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596693669155&di=3838fa707c47ac7368bf6780ecd417dd&imgtype=0&src=http%3A%2F%2Fa2.att.hudong.com%2F71%2F56%2F16300000988660128426569668958.jpg">
+                            </span>
+                            <span class="pic-info">
+                                图片名称sdkfsksjfka.jpeg图片名称sdkfsksjfka.jpeg图片名称sdkfsksjfka.jpeg图片名称sdkfsksjfka.jpeg图片名称sdkfsksjfka.jpeg<br>
+                                图片名称sdkfsksjfka.jpeg<br>
+                                图片名称sdkfsksjfka.jpeg<br>
+                                图片名称sdkfsksjfka.jpeg<br>
+                                图片名称sdkfsksjfka.jpeg<br>
+                                图片名称sdkfsksjfka.jpeg<br>
+                            </span>
+                            <span class="check-btn">
+                                <button class="btn-yes" type="submit">通 过</button>
+                                <br>
+                                <br>
+                                <button class="btn-no" type="submit">不通过</button>
+                            </span>
+                        </div>
+                        <div class="jpeg">
+                            <span class="pic">
+                                <img class="picture" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3238317745,514710292&fm=26&gp=0.jpg">
+                                <img class="picture" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596693669155&di=3838fa707c47ac7368bf6780ecd417dd&imgtype=0&src=http%3A%2F%2Fa2.att.hudong.com%2F71%2F56%2F16300000988660128426569668958.jpg">
+                            </span>
+                            <span class="pic-info">
+                                图片名称sdkfsksjfka.jpeg<br>
+                                图片名称sdkfsksjfka.jpeg<br>
+                                图片名称sdkfsksjfka.jpeg<br>
+                            </span>
+                            <span class="check-btn">
+                                <button class="btn-yes" type="submit">通 过</button>
+                                <br>
+                                <br>
+                                <button class="btn-no" type="submit">不通过</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
+            <div id="innerdiv" style="position:absolute;">
+                <img id="bigimg" style="border:5px solid #fff;" src="" />
+            </div>
+        </div>

@@ -1,0 +1,2 @@
+module Lc::ComparesHelper
+end

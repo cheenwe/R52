@@ -1,0 +1,2 @@
+module Lc::CarriagesHelper
+end

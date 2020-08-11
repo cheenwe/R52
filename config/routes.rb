@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  namespace :lc do
+    resources :compares
+  end
+  namespace :lc do
+    resources :images
+  end
+  namespace :lc do
+    resources :carriages
+  end
+  namespace :lc do
+    resources :trains
+  end
   resources :cloumn_downs
   resources :column_upcases
 
@@ -50,5 +62,9 @@ Rails.application.routes.draw do
   match "/m/api/track" => "mobile#track_api", via:  [:get, :post]
 
 
-  root "jz/users#home"
+  match "/upload" => "upload#index", via:  [:get, :post]
+
+  match "/result" => "upload#list", via:  [:get, :post]
+
+  root "upload#index"
 end

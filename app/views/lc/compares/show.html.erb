@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Train:</strong>
+  <%= @lc_compare.train_id %>
+</p>
+
+<p>
+  <strong>Carriage:</strong>
+  <%= @lc_compare.carriage_id %>
+</p>
+
+<p>
+  <strong>Old file:</strong>
+  <%= @lc_compare.old_file %>
+</p>
+
+<p>
+  <strong>New file:</strong>
+  <%= @lc_compare.new_file %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @lc_compare.result %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @lc_compare.reason %>
+</p>
+
+<p>
+  <strong>Result file:</strong>
+  <%= @lc_compare.result_file %>
+</p>
+
+<%= link_to 'Edit', edit_lc_compare_path(@lc_compare) %> |
+<%= link_to 'Back', lc_compares_path %>

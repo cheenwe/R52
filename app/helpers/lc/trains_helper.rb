@@ -1,0 +1,2 @@
+module Lc::TrainsHelper
+end

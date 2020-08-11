@@ -1,0 +1,52 @@
+<%= form_with(model: lc_compare, local: true) do |form| %>
+  <% if lc_compare.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lc_compare.errors.count, "error") %> prohibited this lc_compare from being saved:</h2>
+
+      <ul>
+      <% lc_compare.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :train_id %>
+    <%= form.number_field :train_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carriage_id %>
+    <%= form.number_field :carriage_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :old_file %>
+    <%= form.text_field :old_file %>
+  </div>
+
+  <div class="field">
+    <%= form.label :new_file %>
+    <%= form.text_field :new_file %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result %>
+    <%= form.number_field :result %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reason %>
+    <%= form.text_field :reason %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result_file %>
+    <%= form.text_field :result_file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<%= form_with(model: lc_image, local: true) do |form| %>
+  <% if lc_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lc_image.errors.count, "error") %> prohibited this lc_image from being saved:</h2>
+
+      <ul>
+      <% lc_image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :train_id %>
+    <%= form.number_field :train_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carriage_id %>
+    <%= form.number_field :carriage_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kind %>
+    <%= form.number_field :kind %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file %>
+    <%= form.text_field :file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

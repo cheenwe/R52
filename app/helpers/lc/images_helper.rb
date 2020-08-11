@@ -1,0 +1,2 @@
+module Lc::ImagesHelper
+end

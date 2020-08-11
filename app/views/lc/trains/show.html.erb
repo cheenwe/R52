@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uuid:</strong>
+  <%= @lc_train.uuid %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @lc_train.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @lc_train.name %>
+</p>
+
+<%= link_to 'Edit', edit_lc_train_path(@lc_train) %> |
+<%= link_to 'Back', lc_trains_path %>

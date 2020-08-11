@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lc Images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Train</th>
+      <th>Carriage</th>
+      <th>Kind</th>
+      <th>File</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lc_images.each do |lc_image| %>
+      <tr>
+        <td><%= lc_image.train_id %></td>
+        <td><%= lc_image.carriage_id %></td>
+        <td><%= lc_image.kind %></td>
+        <td><%= lc_image.file %></td>
+        <td><%= link_to 'Show', lc_image %></td>
+        <td><%= link_to 'Edit', edit_lc_image_path(lc_image) %></td>
+        <td><%= link_to 'Destroy', lc_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lc Image', new_lc_image_path %>

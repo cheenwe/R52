@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Train:</strong>
+  <%= @lc_image.train_id %>
+</p>
+
+<p>
+  <strong>Carriage:</strong>
+  <%= @lc_image.carriage_id %>
+</p>
+
+<p>
+  <strong>Kind:</strong>
+  <%= @lc_image.kind %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <%= @lc_image.file %>
+</p>
+
+<%= link_to 'Edit', edit_lc_image_path(@lc_image) %> |
+<%= link_to 'Back', lc_images_path %>

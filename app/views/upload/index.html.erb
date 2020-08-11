@@ -1,0 +1,41 @@
+<div class="uploads">
+    <div class="menu">
+        <ul>
+            <li class="logo"><img src="<%= Sy::Config.cfg('app_logo_url')%>" alt=""></li>
+            <li id="m1" class="active"><a href="/">上传文件</a></li>
+            <li id="m2"><a href="/result">比对结果</a></li>
+        </ul>
+    </div>
+    <div class="form">
+        <div class="form-left">
+            <form enctype="multipart/form-data" method="post" action="/upload">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <div class="xz-btn">
+                    <a href="#" class="a-upload">选择原始文件夹
+                        <input type="file" name="files[]" multiple="multiple" id="fileOld" onchange="selectOld()" required="required" webkitdirectory>
+                    </a>
+                </div>
+                <div class="list" id="listOld"><span id="t">请上传文件..</span></div>
+            </form>
+        </div>
+        <div class="form-right">
+            <form enctype="multipart/form-data" method="post" action="/upload">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <div class="xz-btn">
+                    <a href="#" class="a-upload">选择比对文件夹
+                        <input type="file" name="files[]" multiple="multiple" id="fileNew" onchange="selectNew()" required="required" webkitdirectory>
+                    </a>
+                </div>
+                <div class="list" id="listNew"><span id="t">请上传文件..</span></div>
+            </form>
+        </div>
+        <div class="upload-btn">
+            <button type="submit">立即比对</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+</script>
