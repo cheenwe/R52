@@ -12,11 +12,14 @@ class SendMailer < ApplicationMailer
     mail(to: email, subject: subject )
   end
 
-  # SendMailer.alarm_mail(alarm).deliver
-  def alarm_mail(alarm, info="空")
+  # SendMailer.alarm_mail(mail, alarm).deliver
+  def alarm_mail(mail, alarm, info="空")
     # return false if email.blank?
+    if mail.blank?
+      mail = Sy::Config.cfg("alarm_mails")
+    end
     @alarm = alarm
-    mail(to: Sy::Config.cfg("alarm_mails"), subject: Sy::Config.cfg("alarm_mail_subject") )
+    mail(to: mail, subject: Sy::Config.cfg("alarm_mail_subject") )
   end
 
   # 邮件测试

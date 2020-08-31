@@ -59,6 +59,6 @@ class Sy::ServicesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sy_service_params
-      params.require(:sy_service).permit(:app_id, :name, :abbr, :remark, :is_open)
+      params.require(:sy_service).permit(:app_id, :name, :abbr, :remark, :alarm_mail, :is_open)
     end
 end

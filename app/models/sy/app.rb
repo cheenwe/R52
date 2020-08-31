@@ -16,7 +16,7 @@ class Sy::App < ApplicationRecord
     # Sy::App.check_abbr("NB")
     def self.check_abbr(abbr, force=true)
         app = Sy::App.find_by(abbr: abbr)
-        p app
+        # p app
         if app.present?
           return app.id
         else

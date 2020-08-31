@@ -4,6 +4,9 @@
 #
 #  id         :integer          not null, primary key
 #  abbr       :string
+#  alarm_at   :datetime
+#  alarm_mail :string
+#  alarm_num  :integer
 #  is_open    :boolean          default(TRUE)
 #  name       :string
 #  remark     :string

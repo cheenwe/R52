@@ -28,18 +28,30 @@ class Sy::InfosController < ApplicationController
             state =  item["state"]
             reason =  item["reason"]
             service_id = Sy::Service.check_abbr(app, service)
+            p "===========: check multi service:  #{service_id}"
 
             info = Sy::Info.create(service_id: service_id, state: state, reason: reason)
-            ser = Sy::Service.find(service_id)
+            sy_service = Sy::Service.find(service_id)
 
             reason = reason||""
             # 应用开启监控并且状态为异常
-            if ser.is_open != false && info.state  == 1
+            if sy_service.is_open != false && info.state  == 1
               reason = "[实时监测]服务状态异常:#{reason}"
               Sy::Alarm.create(service_id: service_id, alarm_at: Time.now, reason: reason)
+
+              alarm_num= (sy_service.alarm_num+1) rescue 1
+              p ">>>>>>>>>>>>#{alarm_num}"
+              p ">>>>>>>>>>>>#{alarm_num}"
+              alarm_at = sy_service.alarm_at
+              alarm_at = Time.now  if alarm_num== 1
+            else
+
+              alarm_num = 0
+              alarm_at = ""
+              reason =""
             end
 
-            ser.update(state: state, remark: reason)
+            sy_service.update(state: state, alarm_num: alarm_num, alarm_at: alarm_at, remark: reason)
           end
 
           render json:  {
@@ -60,20 +72,31 @@ class Sy::InfosController < ApplicationController
       if app&&service&&state
 
         service_id = Sy::Service.check_abbr(app, service)
-        info = Sy::Info.create(service_id: service_id, state: state, send_at:Time.now, reason: reason)
+
+        p "===========: check single service: #{service_id}"
+        sleep(0.01)
+        data = {service_id: service_id, state: state, send_at:Time.now, reason: reason}
+        info = Sy::Info.create(data)
         # ser = Sy::Service.find(service_id).update(state: state)
 
-        ser = Sy::Service.find(service_id)
+        sy_service = Sy::Service.find(service_id)
         reason = reason||""
-        # 应用开启监控并且状态为异常
-        if ser.is_open != false && info.state  == 1
 
+        alarm_at = sy_service.alarm_at
+        # 应用开启监控并且状态为异常
+        if sy_service.is_open != false && info.state  == 1
           reason = "[实时监测]服务状态异常:#{reason}"
           Sy::Alarm.create(service_id: service_id, alarm_at: Time.now, reason: reason)
+          alarm_num = (sy_service.alarm_num+1) rescue 1
+          p ">>>>>>>>>>>>#{alarm_num}"
+          p ">>>>>>>>>>>>#{alarm_num}"
+
+          alarm_at = Time.now  if alarm_num == 1
         end
 
-        ser.update(state: state, remark: reason)
+        sy_service.update(state: state, alarm_num: alarm_num, alarm_at: alarm_at, remark: reason)
 
+        # sy_service.update(state: state, remark: reason)
 
         render json:  {
           "code": 200,

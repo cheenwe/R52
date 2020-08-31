@@ -15,13 +15,16 @@ class Sy::Alarm < ApplicationRecord
     after_create :send_alarm_mail
 
 
+
+    # alarm_at
+    # alarm_mail
+    # alarm_num
+    # Sy::Alarm.last.send_alarm_mail
     def send_alarm_mail
-
-      if Sy::Config.cfg("is_send_alarm_mail").to_i == 1
-        SendMailer.alarm_mail(self).deliver_later
+      if Sy::Config.cfg("is_send_alarm_mail").to_i == 1 && service.is_open == true && service.alarm_num.present? && (service.alarm_num == 1||service.alarm_num == 2||service.alarm_num == 3||(service.alarm_num % 10)==0)
+        # SendMailer.alarm_mail(self).deliver_later
+        SendMailer.alarm_mail(service.alarm_mail, self).deliver_later
       end
-
-
     end
 
 end
