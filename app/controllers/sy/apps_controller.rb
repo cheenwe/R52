@@ -16,6 +16,9 @@ class Sy::AppsController < ApplicationController
   def show
   end
 
+  def home
+  end
+
   # GET /sy/apps/new
   def new
     @sy_app = Sy::App.new

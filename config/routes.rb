@@ -10,17 +10,22 @@ Rails.application.routes.draw do
     resources :services
     resources :apps
   end
+
   match "api/v1/heartbeat" => "sy/infos#heartbeat", via: [:get, :post]
   match "sy/monitor_api" => "sy/infos#monitor_api", via: [:get]
+
   match "sy" => "sy/infos#sy", via: [:get]
+  match "monitor" => "sy/apps#home", via: [:get]
 
 
   namespace :bz do
     resources :versions
     resources :tools
   end
+
   match "bz/tool/upload" => "bz/tools#upload", via: [:get, :post]
   match "/down" => "bz/tools#down", via: [:get]
+  match "/bz" => "bz/tools#index", via: [:get]
 
 
   # 兼职信息管理
@@ -50,5 +55,7 @@ Rails.application.routes.draw do
   match "/m/api/track" => "mobile#track_api", via:  [:get, :post]
 
 
-  root "jz/users#home"
+  match "/home" => "home#index", via: [:get]
+
+  root "home#index"
 end

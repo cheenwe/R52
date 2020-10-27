@@ -1,4 +1,4 @@
-body {padding:0;margin-top:0;margin-right:0;margin-left:0;}
+body {padding:6px;;margin-top:0;margin-right:0;margin-left:0;}
 
 /**滚动条**/
 ::-webkit-scrollbar {
@@ -18,7 +18,7 @@ background: #ededed;
 
 .b_tabs {width:100%;background: #fff;height:100%}
 /**左侧**/
-.menuSideBar {float:left;margin-right:1%;background:#f7f7f7;position: absolute;top:0;left:0;width:20%;min-height:100%;height:auto;font-size:14px;letter-spacing:1px}
+.menuSideBar {float:left;margin-right:1%;background:#f7f7f7;position: absolute;top:0;left:0;width:7%;min-height:100%;height:auto;font-size:14px;letter-spacing:1px}
 .nav-header {padding:15px 0;background:#3b3b3b;color:#fff}
 .nav-header b {color:#fff;font-size:14px;}
 .menuSideBar li {width:100%;float: left;color:#333;text-align: center;line-height:22px;}
@@ -28,7 +28,7 @@ background: #ededed;
 
 /**右侧 tabs**/
 .nav-tabs {background: #fcfcfc}
-#mainFrameTabs {width:79%;float: right;}
+#mainFrameTabs {width:93%;float: right;}
 #mainFrameTabs ul>li.active {font-weight:bold;}
 #mainFrameTabs ul {padding-left:1%;}
 #mainFrameTabs ul>li a {min-width:120px;text-align:center;}

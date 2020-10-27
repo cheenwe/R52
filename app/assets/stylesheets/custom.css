@@ -87,11 +87,35 @@ input, textarea {
 }
 
 .actions {
-    padding: 0.625rem 0.75rem;
-    padding: .75rem 1.25rem;
-    background-color: rgba(0,0,0,.03);
-    border-top: 1px solid rgba(0,0,0,.125);
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.33333333;
+      border-radius: 3px;
+      color: #467fcf;
+      background-color: transparent;
+      background-image: none;
+      border-color: #467fcf;
 }
+.actions input {
+      color: #495057;
+      text-align: center;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.9375rem;
+      line-height: 1.84615385;
+      border-radius: 3px;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: .03em;
+      font-size: 0.8125rem;
+      min-width: 2.375rem;
+      color: #fff;
+      background-color: #467fcf;
+      border-color: #467fcf;
+
+}
+
 p {
       margin-bottom: 2rem;
       display: flex;
@@ -108,11 +132,11 @@ strong {
 }
 
 a {
-    padding: 0.37rem 0.75rem;
+    /*padding: 0.37rem 0.75rem;*/
 
     border: 1px solid #dee2e6;
-    font-weight: 400;
-    font-size: 13px;
+    /*font-weight: 400;*/
+    /*font-size: 13px;*/
 }
 
 #notice {
