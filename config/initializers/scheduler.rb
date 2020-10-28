@@ -32,9 +32,12 @@ end
 # end
 
 
-# # scheduler.every '3h' do
-# #   # do something every 3 hours
-# # end
+scheduler.every '24h' do
+  # do something every 3 hours
+  Rails.logger.info "====== 开启定期检查域用户信息, #{Time.now}"
+  Ldap.search_all_users
+  Rails.logger.flush
+end
 # # scheduler.every '3h10m' do
 # #   # do something every 3 hours and 10 minutes
 # # end

@@ -55,6 +55,9 @@ Rails.application.routes.draw do
   match "/m/api/track" => "mobile#track_api", via:  [:get, :post]
 
 
+  # ldap域账户信息
+  match "ldap" => "home#ldap", via: [:get, :post]
+
   match "/home" => "home#index", via: [:get]
 
   root "home#index"

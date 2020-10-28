@@ -7,4 +7,7 @@ class HomeController < ActionController::Base
   def index
   end
 
+  def ldap
+  end
+
 end

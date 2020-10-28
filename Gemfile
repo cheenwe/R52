@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 5.2.4.4'
 # Use sqlite3 as the database for Active Record
 # gem 'mysql2'
 gem 'sqlite3'
@@ -52,3 +52,6 @@ gem 'carrierwave', '~> 1.3.1'
 gem 'carrierwave-aliyun'
 
 gem 'rufus-scheduler'
+
+# LDAP域账户登录
+gem 'net-ldap'

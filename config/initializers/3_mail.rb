@@ -17,3 +17,13 @@ ActionMailer::Base.smtp_settings = {
     # :openssl_verify_mode => 'none'
 
 }
+
+
+$ladp = Net::LDAP.new :host => Sy::Config.cfg("ldap_host"),
+    :port =>  Sy::Config.cfg("ldap_port"),
+    :auth => {
+    :method => :simple,
+    :username => Sy::Config.cfg("ldap_username"),
+    :password => Sy::Config.cfg("ldap_password")
+  }
+
