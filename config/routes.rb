@@ -58,6 +58,9 @@ Rails.application.routes.draw do
   # ldap域账户信息
   match "ldap" => "home#ldap", via: [:get, :post]
 
+  # 升级官网
+  match "website" => "home#website", via: [:get, :post]
+  
   match "/home" => "home#index", via: [:get]
 
   root "home#index"

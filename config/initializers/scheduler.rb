@@ -32,7 +32,7 @@ end
 # end
 
 
-scheduler.every '24h' do
+s.every '24h' do
   # do something every 3 hours
   Rails.logger.info "====== 开启定期检查域用户信息, #{Time.now}"
   Ldap.search_all_users
