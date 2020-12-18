@@ -5,7 +5,7 @@
 </tr>
 <tr>
     <td valign="middle" style="line-height:24px;padding: 15px 20px;" class="text-danger">
-        您于 <%= @alarm.alarm_at.strftime('%Y-%m-%d %H:%M:%S') rescue''  %> 收到告警邮件, 邮件内容如下:
+        您于 <%= @alarm.alarm_at.strftime('%Y-%m-%d %H:%M:%S') rescue''  %> 收到异常上报邮件, 邮件内容如下:
     </td>
 </tr>
 
@@ -18,7 +18,7 @@
                         应用
                     </th>
                     <th>
-                        服务
+                        设备
                     </th>
                     <th>
                         次数

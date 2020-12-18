@@ -1,24 +1,245 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Tool:</strong>
-  <%= @bz_version.tool_id %>
-</p>
-
-<p>
-  <strong>File:</strong>
-  <%= @bz_version.file %>
-</p>
-
-<p>
-  <strong>Version:</strong>
-  <%= @bz_version.version %>
-</p>
-
-<p>
-  <strong>Remark:</strong>
-  <%= @bz_version.remark %>
-</p>
-
-<%= link_to 'Edit', edit_bz_version_path(@bz_version) %> |
+<%= link_to 'Edit', edit_bz_version_path(@bz_version) %> &nbsp;&nbsp; | &nbsp;&nbsp;
 <%= link_to 'Back', bz_versions_path %>
+</p>
+
+
+<p>
+  <strong>启动时间/bootTime:</strong>
+  <%= @bz_version.remark["bootTime"] %>
+</p>
+
+<p>
+  <strong>CPU使用率/cpu:</strong>
+  <%= @bz_version.remark["cpu"] %>
+</p>
+
+<p>
+  <strong>CPU缓存大小/cpuCacheSize:</strong>
+  <%= @bz_version.remark["cpuCacheSize"] %>
+</p>
+
+<p>
+  <strong>CPU核数/cpuCores:</strong>
+  <%= @bz_version.remark["cpuCores"] %>
+</p>
+
+<p>
+  <strong> CPU家族编号/cpuFamily:</strong>
+  <%= @bz_version.remark["cpuFamily"] %>
+</p>
+
+<p>
+  <strong> CPU赫兹/cpuMhz:</strong>
+  <%= @bz_version.remark["cpuMhz"] %>
+</p>
+
+<p>
+  <strong> CPU名称/cpuModelName:</strong>
+  <%= @bz_version.remark["cpuModelName"] %>
+</p>
+
+<p>
+  <strong> CPU核数/cpuNum:</strong>
+  <%= @bz_version.remark["cpuNum"] %>
+</p>
+
+<p>
+  <strong> 逻辑CPU个数/cpuPhysicalID:</strong>
+  <%= @bz_version.remark["cpuPhysicalID"] %>
+</p>
+
+<p>
+  <strong> 厂商ID/cpuVendorId:</strong>
+  <%= @bz_version.remark["cpuVendorId"] %>
+</p>
+
+
+<p>
+  <strong>磁盘信息/disks:</strong>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>挂载点/mountpoint</th>
+        <th>设备名/device</th>
+        <th>文件类型/fstype</th>
+        <th>磁盘空间/total</th>
+        <th>已用空间/used</th>
+        <th>剩余空间/free</th>
+        <th>使用比例/usedPercent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@bz_version.remark["disks"].each do |disk| %>
+        <tr>
+          <td><%= disk["mountpoint"] %> </td>
+          <td><%= disk["device"] %> </td>
+          <td><%= disk["fstype"] %> </td>
+          <td><%= disk["total"] %> </td>
+          <td><%= disk["used"] %> </td>
+          <td><%= disk["free"] %> </td>
+          <td><%= disk["usedPercent"] %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+
+<p>
+  <strong> 主机ID/hostId:</strong>
+  <%= @bz_version.remark["hostId"] %>
+</p>
+
+<p>
+  <strong> 主机名/hostname:</strong>
+  <%= @bz_version.remark["hostname"] %>
+</p>
+
+<p>
+  <strong> 内核架构/kernelArch:</strong>
+  <%= @bz_version.remark["kernelArch"] %>
+</p>
+
+<p>
+  <strong> 内核版本/kernelVersion:</strong>
+  <%= @bz_version.remark["kernelVersion"] %>
+</p>
+
+<p>
+  <strong> 内存/memory:</strong>
+  <table>
+    <thead>
+      <tr>
+        <th>已用空间/total</th>
+        <th>剩余空间/free</th>
+        <th>使用比例/usedPercent</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% disk = @bz_version.remark["memory"] %>
+        <tr>
+          <td><%= disk["total"] rescue '' %> </td>
+          <td><%= disk["free"] rescue '' %> </td>
+          <td><%= disk["usedPercent"] rescue '' %> </td>
+        </tr>
+    </tbody>
+  </table>
+</p>
+
+<p>
+  <strong>监控信息/monitor:</strong>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>进程ID/pid</th>
+        <th>进程名称/name</th>
+        <th>调用进程用户名/username</th>
+        <th>进程是否还在运行/is_running</th>
+        <th>进程创建时间/create_time</th>
+        <th>调用进程的命令/cmdline</th>
+        <th>进程内存占比/memory_percent</th>
+        <th>进程内存信息/memory_info</th>
+        <th>进程使用的线程数/thread_nums</th>
+        <th>当前进程CPU利用率/cpu_percent</th>
+        <th>进程优先级/io_nice</th>
+        <th>文件描述符/num_fds</th>
+        <th>进程工作路径/path</th>
+        <th>父进程/ppid</th>
+        <th>父进程对象/parent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@bz_version.remark["monitor"].each do |monitor| %>
+        <tr>
+          <td><%= monitor["pid"] rescue '' %></td>
+          <td><%= monitor["name"] rescue '' %></td>
+          <td><%= monitor["username"] rescue '' %></td>
+          <td><%= monitor["is_running"] rescue '' %></td>
+          <td><%= monitor["create_time"] rescue '' %></td>
+          <td><%= monitor["cmdline"] rescue '' %></td>
+          <td><%= monitor["memory_percent"] rescue '' %></td>
+          <td><%= monitor["memory_info"] rescue '' %></td>
+          <td><%= monitor["thread_nums"] rescue '' %></td>
+          <td><%= monitor["cpu_percent"] rescue '' %></td>
+          <td><%= monitor["io_nice"] rescue '' %></td>
+          <td><%= monitor["num_fds"] rescue '' %></td>
+          <td><%= monitor["path"] rescue '' %></td>
+          <td><%= monitor["ppid"] rescue '' %></td>
+          <td><%= monitor["parent"] rescue '' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+
+<p>
+  <strong>网络状态/network:</strong>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>网卡名/name</th>
+        <th>接收字节/bytesRecv</th>
+        <th>发送字节/bytesSent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@bz_version.remark["network"].each do |monitor| %>
+        <tr>
+          <td><%= monitor["name"] rescue ''  %></td>
+          <td><%= monitor["bytesRecv"] rescue ''  %></td>
+          <td><%= monitor["bytesSent"] rescue ''  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+<p>
+  <strong> 系统版本/os:</strong>
+  <%= @bz_version.remark["os"] %>
+</p>
+
+<p>
+  <strong> 系统平台/platform:</strong>
+  <%= @bz_version.remark["platform"] %>
+</p>
+
+<p>
+  <strong> 系统家族/platformFamily:</strong>
+  <%= @bz_version.remark["platformFamily"] %>
+</p>
+
+<p>
+  <strong> 系统版本/platformVersion:</strong>
+  <%= @bz_version.remark["platformVersion"] %>
+</p>
+
+<p>
+  <strong> 进程ID/process:</strong>
+  <%= @bz_version.remark["process"] %>
+</p>
+<p>
+  <strong> 进程数/procs:</strong>
+  <%= @bz_version.remark["procs"] %>
+</p>
+
+<p>
+  <strong> 启动时间/uptime:</strong>
+  <%= @bz_version.remark["uptime"] %>
+</p>
+
+<p>
+  <strong> 虚拟化角色/virtualizationRole:</strong>
+  <%= @bz_version.remark["virtualizationRole"] %>
+</p>
+
+<p>
+  <strong> 虚拟化系统/virtualizationSystem:</strong>
+  <%= @bz_version.remark["virtualizationSystem"] %>
+</p>

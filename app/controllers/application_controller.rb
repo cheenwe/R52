@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :base_authenticate
 
   def base_authenticate
     p basic_auth_open = Sy::Config.cfg("basic_auth_open").nil??   0:Sy::Config.cfg("basic_auth_open")

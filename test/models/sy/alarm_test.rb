@@ -2,9 +2,9 @@
 #
 # Table name: sy_alarms
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  alarm_at   :datetime
-#  reason     :string
+#  reason     :text(4294967295)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  service_id :integer

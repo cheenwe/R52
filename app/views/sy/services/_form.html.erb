@@ -12,36 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :app_id %>
-    <%= form.number_field :app_id, disabled:true %>
+    <%= form.label :"客户" %>
+
+    <select  placeholder='选择.....'   name="sy_service[app_id]"  data-parsley-required class='form-control custom-select-sm select2'  id='select_province_ids'   data-parsley-trigger='keyup' >
+
+      <% Sy::App.all.each do  |app| %>
+        <option value="<%=  app.id %>"><%=  app.name %>(<%=  app.abbr %>)</option>
+      <% end %>
+    </select>
+
+    <%#= f.search_field :project_cont, class:'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :"设备SN" %>
+    <%= form.text_field :name , required:true %>
   </div>
 
   <div class="field">
-    <%= form.label :alarm_mail %>
-    <%= form.text_field :alarm_mail %>
-  </div>
-
-
-
-  <div class="field">
-    <%= form.label :abbr %>
-    <%= form.text_field :abbr, disabled:true %>
+    <%= form.label :"设备UID" %>
+    <%= form.text_field :abbr, required:true %>
   </div>
 
   <div class="field">
-    <%= form.label :remark %>
+    <%= form.label :"是否试用" %>
+    <%= form.check_box :is_open %>
+  </div>
+
+  <div class="field">
+    <%= form.label :"备注" %>
     <%= form.text_field :remark %>
   </div>
 
-  <div class="field">
-    <%= form.label :is_open %>
-    <%= form.check_box :is_open %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>

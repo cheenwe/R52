@@ -1,32 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h3><a href="/sy/services">应用列表</a></h3>
+<h3><a href="/sy/apps/new" class="ml-auto">新建客户</a></h3>
 
 
 <div>
   <%= search_form_for @q do |f| %>
     <div class="tools_search">
-      <strong>服务:</strong>
-      <input name="q[service_id_eq]" list="tool_project" placeholder="请选择服务" autocomplete="off" class='form-control'/>
-      <datalist id="tool_project" autocomplete="off">
-        <% Sy::Service.all.each do  |app| %>
-          <option value="<%=  app.id %>"><%=  app.name %>(<%=  app.abbr %>)</option>
-        <% end %>
-
-      </datalist>
-      <%#= f.search_field :project_cont, class:'form-control' %>
+      <%= f.search_field :name_cont, class:'form-control', placeholder: "搜索客户名" %>
+      <%= f.search_field :abbr_cont, class:'form-control', placeholder: "搜索简称" %>
     </div>
 
     <button type="submit" id="reply-button" style="height:38px;" class="btn btn-success" data-disable-with="搜索">搜索</button>
 
     <%= link_to '刷新', sy_apps_path, class:"", 'data-disable-with' => "doing"%>
+
   <% end %>
 </div>
 
 <table>
   <thead>
     <tr>
-      <th> 名称</th>
+      <th> 客户名称</th>
       <th>简称</th>
       <th>创建于</th>
       <th>-</th>

@@ -2,9 +2,9 @@
 #
 # Table name: jz_sxes
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  end_at     :datetime
-#  name       :string
+#  name       :string(255)
 #  start_at   :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

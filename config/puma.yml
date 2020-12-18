@@ -5,7 +5,7 @@ stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.
 bind "unix:#{app_root}/tmp/puma.sock"
 #environment 'production'
 daemonize true
-port 90
+port 3090
 workers 4
 threads 2,4
 preload_app!

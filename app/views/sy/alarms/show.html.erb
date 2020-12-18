@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
+<%= link_to '返回', sy_alarms_path, class:"btn btn-success" , 'data-disable-with' => "doing"%>
+
+<%= link_to '刷新', sy_alarm_path(@sy_alarm), class:"btn btn-primary" , 'data-disable-with' => "doing"%>
+
 
 <p>
   <strong>Service:</strong>
@@ -9,11 +13,38 @@
   <strong>Alarm at:</strong>
   <%= @sy_alarm.alarm_at %>
 </p>
-
+ 
 <p>
-  <strong>Reason:</strong>
-  <%= @sy_alarm.reason %>
+  <strong>videoIP:</strong>
+  <%=  @sy_alarm.reason[:videoIP] %>
+</p> 
+<p>
+  <strong>eventAudioURL:</strong>
+  <%=  @sy_alarm.reason[:eventAudioURL] %>
 </p>
+ 
+<p>
+  <strong>eventPIC1:</strong>
+  
+  <a href="data:image/jpg;base64,<%=  @sy_alarm.reason[:eventPIC1]  %>" >  
+    <img src="data:image/jpg;base64,<%=  @sy_alarm.reason[:eventPIC1]  %>"  height="640" width="480">
+  </a>
+</p>
+<p>
+  <strong>eventPIC2:</strong>
+  
+  <a href="data:image/jpg;base64,<%=  @sy_alarm.reason[:eventPIC2]  %>" >  
+    <img src="data:image/jpg;base64,<%=  @sy_alarm.reason[:eventPIC2]  %>"  height="640" width="480">
+  </a>
+</p>
+<p>
+  <strong>eventPIC3:</strong>
+  
+  <a href="data:image/jpg;base64,<%=  @sy_alarm.reason[:eventPIC3]  %>" >  
+    <img src="data:image/jpg;base64,<%=  @sy_alarm.reason[:eventPIC3]  %>"  height="640" width="480">
+  </a>
+</p>
+ 
 
 <%= link_to 'Edit', edit_sy_alarm_path(@sy_alarm) %> |
 <%= link_to 'Back', sy_alarms_path %>

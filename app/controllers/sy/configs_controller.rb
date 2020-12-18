@@ -1,6 +1,5 @@
 class Sy::ConfigsController < ApplicationController
   before_action :set_sy_config, only: [:show, :edit, :update, :destroy]
-  before_action :base_authenticate
 
   # GET /sy/configs
   def index

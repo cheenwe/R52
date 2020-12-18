@@ -2,11 +2,11 @@
 #
 # Table name: jz_records
 #
-#  id           :integer          not null, primary key
+#  id           :bigint           not null, primary key
 #  computer_num :integer
 #  enter_at     :datetime
 #  is_first     :boolean
-#  remark       :string
+#  remark       :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :integer

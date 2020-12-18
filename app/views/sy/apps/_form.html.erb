@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :"客户名称" %>
+    <%= form.text_field :name, required:true %>
   </div>
 
   <div class="field">
-    <%= form.label :abbr %>
-    <%= form.text_field :abbr, disabled:true %>
+    <%= form.label :"简称" %>
+    <%= form.text_field :abbr, required:true %>
   </div>
 
   <div class="actions">

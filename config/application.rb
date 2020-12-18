@@ -26,6 +26,7 @@ module R52
 
     config.time_zone = 'Beijing'
     config.active_record.default_timezone = :local
+    config.active_record.belongs_to_required_by_default = false
 
     config.encoding = "utf-8"
     # Settings in config/environments/* take precedence over those specified here.

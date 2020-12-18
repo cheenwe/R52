@@ -2,13 +2,13 @@
 #
 # Table name: bz_tools
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  project    :string
-#  purpose    :string
-#  remark     :string
-#  url        :string
-#  version    :string
+#  id         :bigint           not null, primary key
+#  name       :string(255)
+#  project    :string(255)
+#  purpose    :string(255)
+#  remark     :string(255)
+#  url        :string(255)
+#  version    :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

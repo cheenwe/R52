@@ -2,9 +2,9 @@
 #
 # Table name: sy_configs
 #
-#  id         :integer          not null, primary key
-#  value      :string
-#  var        :string
+#  id         :bigint           not null, primary key
+#  value      :string(255)
+#  var        :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

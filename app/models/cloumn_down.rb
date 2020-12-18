@@ -2,9 +2,9 @@
 #
 # Table name: cloumn_downs
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  result     :string
+#  id         :bigint           not null, primary key
+#  name       :string(255)
+#  result     :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

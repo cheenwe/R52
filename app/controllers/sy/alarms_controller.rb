@@ -6,10 +6,10 @@ class Sy::AlarmsController < ApplicationController
     # @sy_alarms = Sy::Alarm.all
 
 
-    @sy_alarms = Sy::Alarm.includes(:service).order("id desc")
+    @sy_alarms = Sy::Alarm.order("id desc")
 
     @q = @sy_alarms.ransack(params[:q])
-    @sy_alarms = @q.result().paginate(:page => params[:page], :per_page => params[:per_page])
+    @sy_alarms = @q.result().paginate(:page => params[:page], :per_page =>10)
 
   end
 

@@ -1,9 +1,50 @@
 class Sy::InfosController < ApplicationController
   before_action :set_sy_info, only: [:show, :edit, :update, :destroy]
 
-  skip_before_action :verify_authenticity_token, only: [:heartbeat]
-  before_action :check_token, only: [:heartbeat]
+  skip_before_action :verify_authenticity_token, only: [:heartbeat, :events, :configs]
+  skip_before_action :base_authenticate, only: [:heartbeat, :events, :configs]
+  # before_action :check_token, only: [:heartbeat]
 
+
+  # POST events
+  def events
+    reason = {}
+    service_id = params[:eventCode]
+    alarm_at = params[:eventStartTime]
+    reason[:eventPIC1] = params[:eventPIC1]
+    reason[:eventPIC2] = params[:eventPIC2]
+    reason[:eventPIC3] = params[:eventPIC3]
+    reason[:eventAudioURL] = params[:eventAudioURL]
+    reason[:videoIP] = params[:videoIP]
+    reason[:eventCode] = params[:eventCode]
+    Sy::Alarm.create!(reason: reason, alarm_at: alarm_at, service_id: service_id)
+
+    render json:  {"code": 200, "message": "success"}
+  end
+ 
+
+  # POST config
+  def configs
+    stateType = params[:stateType] 
+    content = params[:content] 
+    if stateType == "1"
+      Sy::Config.cfg("rtsp")
+      Sy::Config.find_by(var: "rtsp").update(value: content)
+    elsif stateType == "2"
+      Sy::Config.cfg("ftp")
+      Sy::Config.find_by(var: "ftp").update(value: content)
+    end
+    # # info = Sy::Info.create(reason: videoIP)
+    render json:  {"code": 1, "message": "success"}
+  end
+  
+  # POST heartbeat
+  def heartbeat
+    videoIP = params[:videoIP] 
+    info = Sy::Info.create(reason: videoIP)
+    render json:  {"code": Sy::Config.cfg("address").to_i, "message": "success"}
+  end
+  
   def monitor_api
 
   end
@@ -12,107 +53,6 @@ class Sy::InfosController < ApplicationController
 
   end
 
-  # GET /api/v1/heartbeat
-  def heartbeat
-    app = params[:app]
-    service = params[:service]
-    state = params[:state]
-    multi = params[:multi]
-    reason = params[:reason]
-    services = params["services"]
-
-    if multi && multi == 1
-        if app &&  services
-          services.each do |item|
-            service =  item["service"]
-            state =  item["state"]
-            reason =  item["reason"]
-            service_id = Sy::Service.check_abbr(app, service)
-            p "===========: check multi service:  #{service_id}"
-
-            info = Sy::Info.create(service_id: service_id, state: state, reason: reason)
-            sy_service = Sy::Service.find(service_id)
-
-            reason = reason||""
-            # 应用开启监控并且状态为异常
-            if sy_service.is_open != false && info.state  == 1
-              reason = "[实时监测]服务状态异常:#{reason}"
-              Sy::Alarm.create(service_id: service_id, alarm_at: Time.now, reason: reason)
-
-              alarm_num= (sy_service.alarm_num+1) rescue 1
-              p ">>>>>>>>>>>>#{alarm_num}"
-              p ">>>>>>>>>>>>#{alarm_num}"
-              alarm_at = sy_service.alarm_at
-              alarm_at = Time.now  if alarm_num== 1
-            else
-
-              alarm_num = 0
-              alarm_at = ""
-              reason =""
-            end
-
-            sy_service.update(state: state, alarm_num: alarm_num, alarm_at: alarm_at, remark: reason)
-          end
-
-          render json:  {
-            "code": 200,
-            "success": 1,
-            "data": "1",
-            "msg": "success"
-          }
-        else
-          render json:  {
-            "code": 400,
-            "success": 0,
-            "msg": "参数错误-services"
-          }
-        end
-
-    else
-      if app&&service&&state
-
-        service_id = Sy::Service.check_abbr(app, service)
-
-        p "===========: check single service: #{service_id}"
-        sleep(0.01)
-        data = {service_id: service_id, state: state, send_at:Time.now, reason: reason}
-        info = Sy::Info.create(data)
-        # ser = Sy::Service.find(service_id).update(state: state)
-
-        sy_service = Sy::Service.find(service_id)
-        reason = reason||""
-
-        alarm_at = sy_service.alarm_at
-        # 应用开启监控并且状态为异常
-        if sy_service.is_open != false && info.state  == 1
-          reason = "[实时监测]服务状态异常:#{reason}"
-          Sy::Alarm.create(service_id: service_id, alarm_at: Time.now, reason: reason)
-          alarm_num = (sy_service.alarm_num+1) rescue 1
-          p ">>>>>>>>>>>>#{alarm_num}"
-          p ">>>>>>>>>>>>#{alarm_num}"
-
-          alarm_at = Time.now  if alarm_num == 1
-        end
-
-        sy_service.update(state: state, alarm_num: alarm_num, alarm_at: alarm_at, remark: reason)
-
-        # sy_service.update(state: state, remark: reason)
-
-        render json:  {
-          "code": 200,
-          "success": 1,
-          "data": info.id,
-          "msg": "success"
-        }
-      else
-        render json:  {
-          "code": 400,
-          "success": 0,
-          "msg": "参数错误-app"
-        }
-      end
-    end
-  end
 
   # GET /sy/infos
   def index

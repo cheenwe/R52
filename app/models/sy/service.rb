@@ -2,14 +2,14 @@
 #
 # Table name: sy_services
 #
-#  id         :integer          not null, primary key
-#  abbr       :string
+#  id         :bigint           not null, primary key
+#  abbr       :string(255)
 #  alarm_at   :datetime
-#  alarm_mail :string
+#  alarm_mail :string(255)
 #  alarm_num  :integer
 #  is_open    :boolean          default(TRUE)
-#  name       :string
-#  remark     :string
+#  name       :string(255)
+#  remark     :string(255)
 #  state      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -18,6 +18,8 @@
 class Sy::Service < ApplicationRecord
     belongs_to :app, class_name: "Sy::App"
 
+    validates_uniqueness_of :abbr
+    validates_uniqueness_of :name
     # after_create :check_alarm
 
     #  根据 id 获取 abbr 值并缓存,减少 where 查询
@@ -43,7 +45,7 @@ class Sy::Service < ApplicationRecord
       if second > 5.minutes
         Rails.logger.info "find alarm: #{self.id}"
         str = ago_in_words(second,true)
-        reason = "[定时监测]服务状态异常:  #{ago_in_words(second,true)} 未收到服务推送!"
+        reason = "[定时监测]设备状态异常:  #{ago_in_words(second,true)} 未收到设备推送!"
         update(state:1, remark: reason)
 
         Sy::Alarm.create(service_id: self.id, alarm_at: Time.now, reason: reason)

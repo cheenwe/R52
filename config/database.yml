@@ -1,20 +1,48 @@
 default: &default
-  adapter: sqlite3
-  pool: 24
-  timeout: 5000
+  adapter: mysql2
+  encoding: utf8
+  database: ran_dev
+  pool: 4
+  username: root
+  password: root
+
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: ran_dev
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: ran_dev
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: ran_dev
 
+# PostgreSQL configuration example
+#production:
+#  adapter: postgresql
+#  database: bank
+#  host: localhost
+#  username: postgres
+#  password: "postgres"
+
+# SQLite3 configuration example
+#production:
+#  adapter: sqlite3
+#  database: db/bank.sqlite3
+
+# SQL Server configuration example
+#production:
+#  adapter: sqlserver
+#  database: bank
+#  host: localhost
+#  username: jenkins
+#  password: jenkins
+old:
+  adapter: mysql2
+  encoding: utf8
+  database: qx_crm
+  pool: 10
+  username: root
+  password: root
 

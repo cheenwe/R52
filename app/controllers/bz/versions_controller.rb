@@ -1,10 +1,30 @@
 class Bz::VersionsController < ApplicationController
   before_action :set_bz_version, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :base_authenticate,:verify_authenticity_token, only: [:monitor]
   # GET /bz/versions
   # GET /bz/versions.json
   def index
-    @bz_versions = Bz::Version.all
+    # @bz_versions = Bz::Version.all
+
+    @bz_versions = Bz::Version.order("id desc")
+
+    @q = @bz_versions.ransack(params[:q])
+    @bz_versions = @q.result().paginate(:page => params[:page], :per_page => params[:per_page])
+  end
+
+
+  def monitor
+    p params
+    reason = {}
+    alarm_at = params
+    
+    @bz_version = Bz::Version.new(remark: params)
+    @bz_version.file =  params["hostname"]
+    
+    @bz_version.save
+    
+    render json:  {"code": 200, "message": "success", "status": true}
   end
 
   # GET /bz/versions/1

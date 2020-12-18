@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+
+  match "events" => "sy/infos#events", via: [ :post]
+  match "heartbeat" => "sy/infos#heartbeat", via: [ :post]
+  match "config" => "sy/infos#configs", via: [ :post]
+  match "api/server/monitor" => "bz/versions#monitor", via: [ :post]
+
+
+
   resources :cloumn_downs
   resources :column_upcases
 
@@ -11,7 +19,7 @@ Rails.application.routes.draw do
     resources :apps
   end
 
-  match "api/v1/heartbeat" => "sy/infos#heartbeat", via: [:get, :post]
+  match "heartbeat" => "sy/infos#heartbeat", via: [:get, :post]
   match "sy/monitor_api" => "sy/infos#monitor_api", via: [:get]
 
   match "sy" => "sy/infos#sy", via: [:get]

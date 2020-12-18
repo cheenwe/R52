@@ -2,14 +2,14 @@
 #
 # Table name: jz_users
 #
-#  id             :integer          not null, primary key
-#  alipay         :string
-#  code           :string
-#  id_card        :string
-#  name           :string
-#  phone          :string
+#  id             :bigint           not null, primary key
+#  alipay         :string(255)
+#  code           :string(255)
+#  id_card        :string(255)
+#  name           :string(255)
+#  phone          :string(255)
 #  rate           :integer
-#  remark         :string
+#  remark         :string(255)
 #  state          :integer
 #  this_month_num :integer
 #  created_at     :datetime         not null

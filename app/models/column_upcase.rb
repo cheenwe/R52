@@ -2,9 +2,9 @@
 #
 # Table name: column_upcases
 #
-#  id         :integer          not null, primary key
-#  contect    :text
-#  result     :text
+#  id         :bigint           not null, primary key
+#  contect    :text(65535)
+#  result     :text(65535)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

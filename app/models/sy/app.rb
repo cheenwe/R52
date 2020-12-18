@@ -2,9 +2,9 @@
 #
 # Table name: sy_apps
 #
-#  id         :integer          not null, primary key
-#  abbr       :string
-#  name       :string
+#  id         :bigint           not null, primary key
+#  abbr       :string(255)
+#  name       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

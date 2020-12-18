@@ -2,8 +2,8 @@
 #
 # Table name: sy_infos
 #
-#  id         :integer          not null, primary key
-#  reason     :string
+#  id         :bigint           not null, primary key
+#  reason     :string(255)
 #  send_at    :datetime
 #  state      :integer
 #  created_at :datetime         not null
