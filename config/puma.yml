@@ -1,11 +1,11 @@
 app_root = File.expand_path('../../', __FILE__)
-pidfile "#{app_root}/tmp/pids/puma.pid"
-state_path "#{app_root}/tmp/pids/puma.state"
+pidfile "#{app_root}/tmp/puma.pid"
+state_path "#{app_root}/tmp/puma.state"
 stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.log", true
 bind "unix:#{app_root}/tmp/puma.sock"
 #environment 'production'
-daemonize true
-port 3090
+# daemonize true
+port 3210
 workers 4
 threads 2,4
 preload_app!

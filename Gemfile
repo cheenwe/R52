@@ -56,4 +56,4 @@ gem 'rufus-scheduler'
 # LDAP域账户登录
 gem 'net-ldap'
 
-gem 'mysql2'
+# gem 'mysql2'

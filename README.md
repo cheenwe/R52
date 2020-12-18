@@ -61,3 +61,34 @@ A Rails 5.2 Demo generate with scaffold
     domain:  "126.com" 
 
 
+
+
+## Docker打包
+
+```
+docker login docker.io
+
+docker build -t cheenwe/r52 .
+
+docker push cheenwe/r52:0.1 
+
+```
+
+- 其他
+
+```
+# 宿主机ip: 192.168.1.11
+ 
+docker run -itd --name R52 -p 3210:3210  cheenwe/r52:0.1
+# 防火墙放开 3210 端口
+firewall-cmd --add-port=3210/tcp --permanent
+ 
+# 问题：发现访问：192.168.1.11:3210 访问不通，关闭firewall后，又可以访问通了
+ 
+
+# 解决方案，把docker0网卡添加到trusted域
+firewall-cmd --permanent --zone=trusted --change-interface=docker0
+# 重启加载配置
+firewall-cmd --reload
+```
+

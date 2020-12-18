@@ -1,48 +1,18 @@
+#   gem 'sqlite3'
+#
 default: &default
-  adapter: mysql2
-  encoding: utf8
-  database: ran_dev
-  pool: 4
-  username: root
-  password: root
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
   <<: *default
-  database: ran_dev
+  database: db/development.sqlite3
 
 test:
   <<: *default
-  database: ran_dev
+  database: db/test.sqlite3
 
 production:
   <<: *default
-  database: ran_dev
-
-# PostgreSQL configuration example
-#production:
-#  adapter: postgresql
-#  database: bank
-#  host: localhost
-#  username: postgres
-#  password: "postgres"
-
-# SQLite3 configuration example
-#production:
-#  adapter: sqlite3
-#  database: db/bank.sqlite3
-
-# SQL Server configuration example
-#production:
-#  adapter: sqlserver
-#  database: bank
-#  host: localhost
-#  username: jenkins
-#  password: jenkins
-old:
-  adapter: mysql2
-  encoding: utf8
-  database: qx_crm
-  pool: 10
-  username: root
-  password: root
-
+  database: db/production.sqlite3

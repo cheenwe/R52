@@ -1,3 +1,0 @@
-idoc/public/uploads/
-log/*
-tmp/*

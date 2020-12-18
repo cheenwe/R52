@@ -21,8 +21,8 @@ app_root=`dirname $basepath`
 
 cd $app_root
 
-puma_pidfile="$app_root/tmp/pids/puma.pid"
-puma_stateile="$app_root/tmp/pids/puma.state"
+puma_pidfile="$app_root/tmp/puma.pid"
+puma_stateile="$app_root/tmp/puma.state"
 puma_cmd="bundle exec puma -C config/puma.yml"
 
 stop_puma_cmd="bundle exec pumactl --state $puma_stateile stop"
