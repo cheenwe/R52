@@ -48,7 +48,7 @@ gem 'will_paginate'
 gem 'ransack'
 
 # 上传组件
-gem 'carrierwave', '~> 1.3.1'
+gem 'carrierwave', '~> 1.3.2'
 gem 'carrierwave-aliyun'
 
 gem 'rufus-scheduler'
